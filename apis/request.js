@@ -6,7 +6,6 @@ function Request(url, data = {}, method) {
   var url = url
   var data = data
   var method = method
-  console.log("123456")
   if (method == 'GET') {
     var get_data = new Promise(function(resolve, reject) {
       wx.request({

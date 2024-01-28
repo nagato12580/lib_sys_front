@@ -1,5 +1,5 @@
 // app.js
-var Apipi = require("./apis/api.js"); //引入apijs
+// var Apipi = require("./apis/api.js"); //引入apijs
 
 App({
 
