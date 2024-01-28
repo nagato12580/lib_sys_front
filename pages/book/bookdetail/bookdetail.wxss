@@ -1,0 +1,51 @@
+/* pages/bookdetail/bookdetail.wxss */
+.image-container {
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  margin-bottom: 10rpx;
+}
+.title{
+  display: flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items: center;
+}
+.title-text{
+  font-size: 25px;
+  margin-top: 5rpx;
+}
+.author-text{
+  font-size: 15px;
+  color: rgb(128, 126, 126);
+}
+.box-info{
+  display: flex;
+  flex-direction:column;
+  justify-content:left;
+  align-items: left;
+  margin: 50rpx;
+  margin-bottom: 130rpx;
+  
+
+  
+}
+.box-title{
+  font-size: small;
+  color: #a5adab;
+}
+.box-container{
+  display: flex;
+  flex-direction:column;
+
+}
+.box-detail{
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+  font-size: 15px;
+  color: dimgray;
+}
+.press-detail{
+  font-size: 15px;
+  color: dimgray;
+}

@@ -1,0 +1,7 @@
+<!--pages/noticelist/noticelist.wxml-->
+<van-cell value="{{item.created_time}}" is-link wx:for="{{noticeList}}" bind:tap="getNoticeDetail" data-id="{{item.id}}">
+  <view slot="title">
+    <view class="van-cell-text">{{item.title}}</view>
+    <van-tag type="primary" wx:if="{{item.is_top}}">置顶</van-tag>
+  </view>
+</van-cell>

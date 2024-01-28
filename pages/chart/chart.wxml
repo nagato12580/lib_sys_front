@@ -1,0 +1,12 @@
+<!--pages/chart/chart.wxml-->
+<!-- <view wx:for="{{bookList}}" wx:key="index" class="book-item" >
+  <view class="thumb">
+    <image src="{{item.image}}"></image>
+  </view>
+  <view class="info">
+    <text class="book-title">{{item.bookTitle}}</text>
+    <text>作者：{{item.author}}</text>
+    <text>简介：{{item.introduction}}</text>
+  </view>
+</view> -->
+<book-list book-list="{{bookList}}" bind:clickBookId="getSonBookID"></book-list>

@@ -1,0 +1,5 @@
+<view class="book-second-type">
+    <view class="second-type" wx:for="{{sencondList}}" bind:tap="getBookType" data-index="{{index}}">
+      <text >{{item.name}}</text>
+    </view>
+</view>

@@ -1,0 +1,86 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/user/user",
+    "pages/book/book",
+    "pages/chart/chart",
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/noticelist/noticelist",
+    "pages/noticelist/notice/notice",
+    "pages/borrow/borrow",
+    "pages/book/bookdetail/bookdetail",
+    "pages/login/login"
+  ],
+  "window": {
+    "navigationBarTitleText": "数字图书馆",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTextStyle": "black"
+
+
+  },
+  "tabBar": {
+    "custom": true,
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "iconPath": "./images/icon/icon_home_line.png",
+        "selectedIconPath": "./images/icon/icon_home_fill.png"
+      },
+      {
+        "pagePath": "pages/book/book",
+        "text": "选书",
+        "iconPath": "./images/icon/icon_me_line.png",
+        "selectedIconPath": "./images/icon/icon_me_fill.png"
+      },
+      {
+        "pagePath": "pages/borrow/borrow",
+        "text": "预约",
+        "iconPath": "./images/icon/icon_me_line.png",
+        "selectedIconPath": "./images/icon/icon_me_fill.png"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "text": "我的",
+        "iconPath": "./images/icon/icon_me_line.png",
+        "selectedIconPath": "./images/icon/icon_me_fill.png"
+      }
+  ]
+  },
+
+  "rendererOptions": {
+    "skyline": {
+      "defaultDisplayBlock": true,
+      "disableABTest": true,
+      "sdkVersionBegin": "3.0.0",
+      "sdkVersionEnd": "15.255.255"
+    }
+  },
+  "componentFramework": "glass-easel",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents",
+
+  "usingComponents": {
+    "van-button": "@vant/weapp/button/index",
+    "van-tabbar": "@vant/weapp/tabbar/index",
+    "van-tabbar-item": "@vant/weapp/tabbar-item/index",
+    "van-search": "@vant/weapp/search/index",
+    "van-sidebar": "@vant/weapp/sidebar/index",
+    "van-sidebar-item": "@vant/weapp/sidebar-item/index",
+    "van-toast": "@vant/weapp/toast/index",
+    "van-cell": "@vant/weapp/cell/index",
+    "van-cell-group": "@vant/weapp/cell-group/index",
+    "van-tag": "@vant/weapp/tag/index",
+    "van-notice-bar": "@vant/weapp/notice-bar/index",
+    "van-divider": "@vant/weapp/divider/index",
+    "van-tab": "@vant/weapp/tab/index",
+    "van-tabs": "@vant/weapp/tabs/index",
+    "van-goods-action": "@vant/weapp/goods-action/index",
+    "van-goods-action-icon": "@vant/weapp/goods-action-icon/index",
+    "van-goods-action-button": "@vant/weapp/goods-action-button/index",
+    "van-share-sheet": "@vant/weapp/share-sheet/index"
+
+    
+  }
+}

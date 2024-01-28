@@ -1,0 +1,6 @@
+{
+
+  "usingComponents": {
+    "book-type": "/components/book-sencond-type/book-second-type"
+  }
+}

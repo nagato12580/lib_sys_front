@@ -1,0 +1,71 @@
+/* pages/book/book.wxss */
+/*侧边栏的样式*/
+.container1{
+  border-right: gainsboro solid 1px;
+  width: 180rpx;
+  margin-top: 70rpx;
+  height: 1500rpx;
+  
+}
+.container1-item{
+  display: flex;
+  padding: 10rpx;
+  margin: 10px;
+  justify-content: center; 
+  align-items: center;
+  font-size: 12px;
+}
+
+/*搜索框的样式*/
+.inputInfor{
+
+  border: gainsboro solid 2px;
+  border-radius: 25rpx;
+}
+.van-sidebar {
+  height: 998rpx;
+
+}
+.van-sidebar-item {
+  --sidebar-line-height:10px;
+  height: 100rpx;
+  width: 150rpx;
+  --sidebar-font-size:12px;
+  --sidebar-selected-border-color:#1989FA;
+}
+.book-container{
+  display: flex;
+  flex-direction:row;
+
+}
+.type-list{
+  width: 160rpx;
+
+}
+.book-second-type{
+  display: flex;
+  width: 580rpx;
+  flex-wrap: wrap;/*实现水平布局的自动换行*/
+  justify-content: center; /* 水平居中对齐 */
+}
+
+.second-type{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;/*实现水平布局的自动换行*/
+  justify-content: center; /* 水平居中对齐 */
+  align-items: center; /* 垂直居中对齐 */
+  background-color: blueviolet;
+  width: 200rpx;
+  margin: 12rpx;
+  border-radius: 30px;
+  height: 70rpx;
+  
+  
+}
+.second-type text{
+  font-size: 15px;
+  text-align: center;
+  justify-content: center;
+  
+}

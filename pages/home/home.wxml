@@ -1,0 +1,83 @@
+<!--pages/home/home.wxml-->
+<!--轮播图-->
+<view>
+    <swiper indicator-dots="true" autoplay="true" interval="2000" >
+    <swiper-item wx:for="{{images}}">
+    <image class="image" src="{{item.url}}" mode="aspectFill"></image>
+    </swiper-item>
+    </swiper>
+</view>
+
+<!-- 公告 -->
+<view class='notice'>
+    <!-- 这里点击跳转到公告列表页面，但是我想要跳转到详情页面 -->
+    <view  class='notice-contain' bind:tap="getNoticeList">
+        <icon type="search" size="18" color="##FFF" id="ic"></icon>
+        <swiper class="tab-right" vertical="true" autoplay="true" circular="true" interval="5000" display-multiple-items='1'>
+            <view class="right-item">
+                <view wx:for="{{noticeList}}" wx:key="index">
+                    <swiper-item>
+                        <view class='content-item'>
+                            <view class="swiper-item text-red text-bold" catch:tap="getNoticeDetial" data-id="{{item.id}}">{{item.title}}</view>
+                        </view>
+                    </swiper-item>
+                </view>
+            </view>
+        </swiper>
+    </view>
+</view>
+
+<!--热门图书-->
+<view class="view-contain">
+  <view class="text-contain"> 
+      <view class="title">
+        <text>热门图书</text>
+      </view>
+    <view class="item">
+      <view class="more" bind:tap="getBookList">更多</view>
+    </view>
+  </view>
+  <view class="popular-contain">
+    <view class="popular-item" wx:for="{{popularList}}" wx:key="index" bind:tap="getBookId" data-id="{{item.id}}">
+      <view class="item-image">
+        <image src="{{item.image}}"></image>
+      </view>
+      <view class="item-text">
+        <text class='text-title'>{{item.bookTitle}}</text>
+        <text class='text-author'>{{item.author}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+<!--新书展示-->
+<view class="view-contain">
+  <view class="text-contain"> 
+      <view class="title">
+        <text>新书一览</text>
+      </view>
+    <view class="item">
+      <navigator url="/pages/chart/chart?newbook=1" open-type="navigate" class="more">更多</navigator>
+    </view>
+  </view>
+  <view class="popular-contain">
+
+  </view>
+</view>
+
+
+
+<!--借阅榜-->
+<view class="view-contain">
+  <view class="text-contain"> 
+      <view class="title">
+        <text>借阅榜</text>
+      </view>
+    <view class="item">
+      <navigator url="/pages/chart/chart" open-type="navigate" class="more">更多></navigator>
+    </view>
+  </view>
+  <view class="popular-contain">
+  </view>
+</view>

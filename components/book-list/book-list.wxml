@@ -1,0 +1,17 @@
+<!--components/book-list/book-list.wxml-->
+<view wx:for="{{bookList}}" wx:key="{{index}}" class="book-item" bind:tap="getBookId" data-index="{{index}}">
+  <view class="thumb">
+    <image src="{{item.image}}"></image>
+  </view>
+  <view class="info">
+    <text class="book-title">{{item.bookTitle}}</text>
+    <text>作者：{{item.author}}</text>
+    <text class="introduction-item">简介：{{item.introduction}}</text>
+    <!-- 显示标签 -->
+    <van-row gutter="4">
+      <van-col span="4" wx:for="{{item.category_detail}}">
+        <van-tag plain round type="primary" >{{item}}</van-tag>
+      </van-col>
+  </van-row>
+  </view>
+</view>

@@ -1,0 +1,28 @@
+.book-second-type{
+  display: flex;
+  width: 580rpx;
+  flex-wrap: wrap;/*实现水平布局的自动换行*/
+  justify-content: left; 
+  padding-left: 30rpx;
+}
+
+.second-type{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;/*实现水平布局的自动换行*/
+  justify-content: center; /* 水平居中对齐 */
+  align-items: center; /* 垂直居中对齐 */
+  background-color: #efefef;
+  width: 250rpx;
+  margin: 12rpx;
+  border-radius: 30px;
+  height: 70rpx;
+  box-shadow: 0rpx 0rpx 5rpx #ddd;
+}
+.second-type text{
+  font-size: 15px;
+  text-align: center;
+  justify-content: center;
+  
+  
+}

@@ -1,0 +1,104 @@
+<!--pages/bookdetail/bookdetail.wxml-->
+<!-- 图片 -->
+<view class="image-container">
+<image src="{{bookDetail.book_info.image_url}}" mode="aspectFit" ></image>
+</view>
+<!-- 书名以及作者 -->
+<view class="title">
+  <text class="title-text">{{bookDetail.book_info.bookTitle}}</text>
+  <text class="author-text">{{bookDetail.book_info.author}}</text>
+  <!-- <view class="tag-container">
+    <van-tag plain round type="primary" wx:for="{{bookDetail.book_info.category_detail}}">{{item}}</van-tag>
+  </view> -->
+  <van-row gutter="5">
+      <van-col span="8" wx:for="{{bookDetail.book_info.category_detail}}">
+        <van-tag plain round type="primary" >{{item}}</van-tag>
+      </van-col>
+  </van-row>
+</view>
+
+<!-- 其余信息 -->
+<!-- <van-divider /> -->
+<van-tabs sticky bind:click="onClick" color="#1989fa" >
+  <van-tab title="书籍信息">
+  <!-- 这里展示图书信息 -->
+    <view class="box-info">
+    <!-- ISBN -->
+      <view class="box-container">
+        <view class="box-title">
+          <van-icon name="play" size="10px" color="#00b26a"/> ISBN
+        </view>
+        <view class="box-detail">{{bookDetail.book_info.ISBN}}</view>
+      </view>
+    <!-- 内容简介 -->
+      <view class="box-container">
+        <view class="box-title">
+          <van-icon name="play" size="10px" color="#00b26a"/> 内容简介
+        </view>
+        <view class="box-detail">{{bookDetail.book_info.introduction}}</view>
+      </view>
+      <!-- 出版信息  -->
+      <view class="box-container">
+        <view class="box-title">
+          <van-icon name="play" size="10px" color="#00b26a"/> 出版信息
+        </view>
+        <view class="press-detail">出版社：{{bookDetail.book_info.pressTitle}}</view>
+        <view class="press-detail">出版日期：{{bookDetail.book_info.publishDate}}</view>
+        <view class="press-detail">版次：{{bookDetail.book_info.version}}</view>
+      </view>
+    </view>
+  </van-tab>
+  <van-tab title="馆藏信息">
+    <view class="box-info">
+      <!-- 馆藏位置 -->
+      <view class="box-container">
+        <view class="box-title">
+          <van-icon name="play" size="10px" color="#00b26a"/> 馆藏位置：
+        </view>
+        <view class="box-detail">{{bookDetail.lib_info.bookLocation}}</view>
+      </view>
+      <!-- 馆藏总数量 -->
+      <view class="box-container">
+        <view class="box-title">
+          <van-icon name="play" size="10px" color="#00b26a"/> 馆藏总数：
+        </view>
+        <view class="box-detail">{{bookDetail.lib_info.stockNumber}}</view>
+      </view>
+      <!-- 已借出数 -->
+      <view class="box-container">
+        <view class="box-title">
+          <van-icon name="play" size="10px" color="#00b26a"/> 已借出数：
+        </view>
+        <view class="box-detail">{{bookDetail.lib_info.stockNumber}}</view>
+      </view>
+      <!-- 剩余馆藏数 -->
+      <view class="box-container">
+        <view class="box-title">
+          <van-icon name="play" size="10px" color="#00b26a"/> 当前馆藏数量：
+        </view>
+        <view class="box-detail">{{bookDetail.lib_info.realNumber}}</view>
+      </view>
+    
+    </view>
+  </van-tab>
+</van-tabs>
+
+<!-- 底部导航栏 -->
+<van-goods-action>
+  <van-goods-action-icon icon="share-o"  text="分享" bind:click="onClickShare" />
+    <van-share-sheet 
+    show="{{ showShare }}"
+    title="立即分享给好友"
+    options="{{ options }}"
+    bind:select="onSelect"
+    bind:close="onClose"
+    overlay="{{false}}"
+  />
+  <van-goods-action-icon icon="star-o" text="收藏" color="" bind:click="onClickIcon" />
+  <van-goods-action-button
+    text="借阅"
+    type="primary"
+    color="#1989fa"
+    bind:click="onClickButton"
+  />
+</van-goods-action>

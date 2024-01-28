@@ -1,0 +1,9 @@
+<!--pages/notice/notice.wxml-->
+<!-- <text>{{noticeDetail[0].content}}</text> -->
+<view class="text-container">
+  <rich-text nodes="{{noticeDetail[0].content}}"></rich-text>
+</view>
+<view class="file-container" wx:if="{{noticeDetail[0].full_image_path}}">
+附件：
+  <view wx:for="{{noticeDetail[0].full_image_path}}" catch:tap="getFile"  data-id="{{index}}" class="file-item"> {{item.name}}</view>
+</view>

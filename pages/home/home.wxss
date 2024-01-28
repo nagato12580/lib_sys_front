@@ -1,0 +1,127 @@
+/* 设置swiper组件的宽高 */
+swiper{
+  width: 100%;
+  height: 400rpx;
+}
+/* 设置swiper组件里面图片的宽高 */
+swiper image{
+  width: 100%;
+  height: 600rpx;
+}
+
+/* 公告栏 */
+.notice {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* margin-top: 10rpx */
+}
+
+.notice-contain {
+  /* box-shadow: 0px 1px 1px 1px rgba(202, 199, 199, 0.993); */
+  display: flex;
+  flex-direction: row;
+  background: #FFFFFF;
+  width: 700rpx;
+  height: 82rpx;
+  border-radius: 16rpx;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-red {
+  color: black;
+}
+
+.tab-right {
+  height: 55rpx;
+  width: 85%;
+  line-height: 55rpx;
+  padding-left: 30rpx;
+}
+
+.swiper-item {
+  font-size: 30rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  
+  /* letter-spacing: 2px; */
+}
+
+.view-contain {
+  height: 1080rpx;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10rpx;
+  margin-bottom: 25rpx;
+  margin-top: 25rpx;
+  padding: 15rpx;
+  border-top: 1px solid #efefef;
+  border-bottom: 1px solid #efefef;  
+  border-radius: 8rpx;
+  box-shadow: 1rpx 1rpx 20rpx #ddd;
+}
+.text-contain{
+  display: flex;
+  height: 80rpx;
+}
+.title {
+  height: 50rpx;
+  width: 80%;
+  margin: 10rpx;
+  font-size: 40rpx;
+}
+.item {
+  height: 50rpx;
+  width: 20%;
+  display: flex;
+  justify-content: center; /* 水平居中对齐 */
+  align-items: center; /* 垂直居中对齐 */
+  margin: 10rpx;
+}
+
+.more{
+  height: 40rpx;
+  width: 80rpx;
+  font-size: 25rpx;
+  border: 1px solid #a8a2a2;
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  border-radius: 45rpx  
+}
+.popular-contain{
+  height: 1000rpx;
+  display: flex;
+  flex-wrap: wrap;/*实现水平布局的自动换行*/
+  justify-content: center; /* 水平居中对齐 */
+  align-items: center; /* 垂直居中对齐 */
+
+}
+.popular-item{
+  display: flex;
+  flex-direction: column;/*实现垂直布局*/
+  width: 30%;
+  height: 30%;
+  margin: auto;
+}
+.item-image{
+  height: 80%;
+}
+.popular-item image{
+  max-width: 100%;
+  max-height: 100%;
+}
+.item-text{
+  display: flex;
+  flex-direction: column;/*实现垂直布局*/
+}
+.text-title{
+  font-size: 13px;
+  font-weight: bold;
+}
+.text-author{
+  font-size: 10px;
+  color: #a7a0a0;
+}

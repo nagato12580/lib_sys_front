@@ -1,0 +1,35 @@
+
+<!--顶部搜索框-->
+<!-- <view >
+  <view style="position: fixed;width: 100%;top: 0px;">
+    <view >
+    
+        <input type="text" class="inputInfor" placeholder="输入书名/作者进行检索"   placeholder-class="center"/>
+    </view>
+    </view>
+</view> -->
+
+
+<!--侧边滚动栏-->
+<!-- <scroll-view  style="position: fixed" class="container1" scroll-y="true" >
+<view class="container1-item" wx:for="{{menu}}">{{item}}</view>
+</scroll-view> -->
+
+<van-search value="{{ value }}" shape="round" placeholder="请输入搜索关键词" />
+
+<view class="book-container">
+  <view class="type-list">
+    <van-sidebar active-key="{{ activeKey }}" bind:change="onChange" >
+      <van-sidebar-item title="{{item.name}}" wx:for="{{typeList}}"  />
+    </van-sidebar>
+  </view>
+  <view class="book-second-type">
+    <!-- <view class="second-type" wx:for="{{sencondList}}">
+      <text >{{item.name}}</text>
+    </view> -->
+    <!-- 二级分类展示 -->
+    <book-type sencond-list="{{sencondList}}" bind:syncType="syncBookType"></book-type>
+  </view>
+</view>
+
+

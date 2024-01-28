@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "book-list": "/components/book-list/book-list"
+  },
+  "styleIsolation": "shared",
+  "onReachBottomDistance": 200,
+  "enablePullDownRefresh": true,
+  "backgroundColor": "#efefef",
+  "backgroundTextStyle":"dark"
+}

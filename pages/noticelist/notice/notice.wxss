@@ -1,0 +1,11 @@
+/* pages/notice/notice.wxss */
+.text-container{
+  margin: 10px;
+}
+.file-container{
+  margin: 10px;
+}
+.file-item{
+  text-decoration: underline;
+  line-height: 1.5; /* 行高为字体大小的1.5倍 */
+}
