@@ -11,7 +11,7 @@ function Request(url, data = {}, method) {
       wx.request({
         url: url,
         header: {
-          'Authorization': 'JWT ' + app.globalData.jwt // 默认值
+          'Authorization': 'Bearer ' + wx.getStorageSync('jwt') // 默认值
         },
         method: method,
         data: data,
@@ -25,7 +25,7 @@ function Request(url, data = {}, method) {
         wx.request({
           url: url,
           header: {
-            'Authorization': 'JWT ' + app.globalData.jwt // 默认值
+            'Authorization': 'Bearer ' + wx.getStorageSync('jwt') // 默认值
           },
           method: method,
           data:data,

@@ -94,7 +94,12 @@
     bind:close="onClose"
     overlay="{{false}}"
   />
-  <van-goods-action-icon icon="star-o" text="收藏" color="" bind:click="onClickIcon" />
+  <block wx:if="{{isStar}}">
+    <van-goods-action-icon icon="star-o" text="收藏" color="{{icon_color}}" bind:click="cancelStar" />
+  </block>
+  <block wx:else="{{!isStar}}">
+    <van-goods-action-icon icon="star-o" text="收藏" color="" bind:click="onClickIcon" />
+  </block>
   <van-goods-action-button
     text="借阅"
     type="primary"

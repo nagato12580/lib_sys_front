@@ -1,0 +1,100 @@
+<view class="container">
+    <view class="userinfo">
+        <view class='head-wrap' wx:if="{{hasUserInfo == false}}" bindtap='goAuth'>
+            <view class="no-login-avatar">
+                <view class='no-avatar'>
+                    <image class='avatar' src="/images/icon/default_avatar_big.png"></image>
+                </view>
+                <view class='btn-login' bind:tap="getUserProfile">点我登录</view>
+            </view>
+        </view>
+        <view class='head-wrap' wx:else bindtap='goProfile'>
+            <view class="head-l">
+                <view class='l'>
+                    <image class='avatar' src="{{userInfo.wx_photo}}"></image>
+                </view>
+                <view class='r'>
+                    <view class='t'>
+                        <view class='name'>{{userInfo.username}}</view>
+                    </view>
+                </view>
+            </view>
+            <view class="head-r">
+                <view class="arrow" ></view>
+            </view>
+        </view>
+    </view>
+    <!-- <ad unit-id="adunit-89ae0a0b6860dc9f" ad-type="grid" grid-opacity="0.8" grid-count="5" ad-theme="white"></ad> -->
+
+    <!-- 我的收藏 -->
+    <view class="order-container">
+        <view class='header' data-index='0' bindtap='toMyStarBookList'>
+            <view class='top-title'>
+                <!-- <view class='left-line'></view> -->
+                <image  class='icon' src="../../images/icon/gray_star.png"></image>
+                <view class='text'>我的收藏</view>
+            </view>
+            <view class='see-more'>
+                <view class="text"></view>
+                <view class="arrow"></view>
+            </view>
+        </view>
+    </view>
+    <!-- 我的借阅 -->
+    <view class="order-container">
+        <view class='header' data-index='0' bindtap='toMyBorrowBook'>
+            <view class='top-title'>
+                <!-- <view class='left-line'></view> -->
+                <image  class='icon' src="../../images/icon/time.png"></image>
+                <view class='text'>我的借阅</view>
+            </view>
+            <view class='see-more'>
+                <view class="text"></view>
+                <view class="arrow"></view>
+            </view>
+        </view>
+    </view>
+
+    <!-- 我的信息 -->
+    <view class="order-container">
+        <view class='header' data-index='0' bindtap='toMyDetailInfo'>
+            <view class='top-title'>
+                <!-- <view class='left-line'></view> -->
+                <image  class='icon' src="../../images/icon/edit.png"></image>
+                <view class='text'>我的信息</view>
+            </view>
+            <view class='see-more'>
+                <view class="text"></view>
+                <view class="arrow"></view>
+            </view>
+        </view>
+    </view>
+
+    <!-- 我的预约 -->
+    <view class="order-container">
+        <view class='header' data-index='0' bindtap='toMyReservation'>
+            <view class='top-title'>
+              <image  class='icon' src="../../images/icon/datatime.png"></image>
+                <view class='text'>我的预约</view>
+            </view>
+            <view class='see-more'>
+                <view class="text"></view>
+                <view class="arrow"></view>
+            </view>
+        </view>
+    </view>
+    <!-- 我的留言 -->
+    <view class="order-container">
+        <view class='header' data-index='0' bindtap='toOrderListTap'>
+            <view class='top-title'>
+              <image  class='icon' src="../../images/icon/message.png"></image>
+                <view class='text'>我的消息</view>
+            </view>
+            <view class='see-more'>
+                <view class="text"></view>
+                <view class="arrow"></view>
+            </view>
+        </view>
+    </view>
+
+</view>

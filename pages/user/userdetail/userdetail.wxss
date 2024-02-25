@@ -1,0 +1,32 @@
+/* pages/user/userdetail/userdetail.wxss */
+page {
+  background-color: #fafafa;
+}
+.item{
+  display: flex;
+  flex-direction: column;
+  margin: 0 30rpx;
+  margin-bottom: 10rpx;
+  border-bottom: 1px solid #eee;
+}
+.item .item-name{
+  margin: 10rpx;
+  width: 200rpx;
+  height: 90rpx;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.item .left-line {
+  width: 6rpx;
+  height: 20rpx;
+  margin-right: 20rpx;
+  background: #429efb;
+}
+.item-input{
+  margin-bottom: 10rpx;
+}
+
+
+

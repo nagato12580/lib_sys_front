@@ -1,0 +1,13 @@
+<view class="container">
+  <button class="avatar-wrapper" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
+    <image class="avatar" src="{{avatarUrl}}"></image>
+  </button>
+  <view class='edit-container'>
+    <view class="a-item">
+      <input type="username" class="a-input" bindinput="bindinputUserName" bindblur="bindinputUserName" value="{{userName}}"  />
+    </view>
+  </view>
+  <view class='wrap-btn'>
+    <view class="btn-wrap active" bindtap='saveInfo'>保存</view>
+  </view>
+</view>

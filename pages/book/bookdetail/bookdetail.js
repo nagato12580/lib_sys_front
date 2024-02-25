@@ -9,9 +9,11 @@ Page({
   data: {
     bookDetail:[],
     showShare: false,
+    isStar:true,
+    icon_color:'#1989fa',
     options: [
       { name: '微信', icon: 'wechat', openType: 'share' },
-      { name: '复制链接', icon: 'link' },
+      // { name: '复制链接', icon: 'link' },
     ],
   },
   onClickShare(event){
@@ -25,6 +27,46 @@ Page({
     Toast(event.detail.name);
     this.onClose();
   },
+  //收藏图书
+  onClickIcon(){
+    var book_id=this.data.bookDetail.id
+    var that=this
+    Request.request(Api.collectBook,{'book_id':book_id},'POST').then(function(res){
+      if(res.statusCode==200){
+        that.setData({
+          isStar:res.data.isStar
+        })
+      }
+    })
+
+  },
+  //查看图书状态
+  getStarStatus(id){
+    var book_id=id
+    var that=this
+    Request.request(Api.getStar,{'book_id':book_id},'GET').then(function(res){
+      that.setData({
+        isStar:res.data.isStar
+      })
+    })
+  },
+  //取消收藏图书
+  cancelStar(){
+    var book_id=this.data.bookDetail.id
+    var that=this
+    Request.request(Api.cancelStar,{'book_id':book_id},'POST').then(function(res){
+      if(res.statusCode==200){
+        that.setData({
+          isStar:res.data.isStar
+        })
+      }
+    })
+
+
+  },
+
+
+
 
   /**
    * 生命周期函数--监听页面加载
@@ -43,19 +85,20 @@ Page({
         })
       }
     )
+    this.getStarStatus(id)
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady() {
-
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow() {
+   
 
   },
 

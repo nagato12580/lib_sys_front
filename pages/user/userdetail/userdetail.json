@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "完善资料",
+  "usingComponents": {
+    "van-radio": "@vant/weapp/radio/index",
+    "van-radio-group": "@vant/weapp/radio-group/index",
+    "select-checkbox": "/components/select-checkbox/select-checkbox"
+  }
+}

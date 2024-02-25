@@ -1,0 +1,2 @@
+<!--pages/user/mystar/mystar.wxml-->
+<book-list book-list="{{bookList}}" bind:clickBookId="getSonBookID"></book-list>

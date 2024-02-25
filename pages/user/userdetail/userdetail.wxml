@@ -1,0 +1,46 @@
+<!--pages/user/userdetail/userdetail.wxml-->
+<view class="ud-container">
+  <view class="item">
+    <view class='item-name'>
+      <view class='left-line'></view>
+      <view class='text'>姓名：</view>
+    </view>
+    <view class="item-input">
+      <input type="username" class="a-input" value="{{realName}}"  />
+    </view>
+  </view>
+
+  <view class="item">
+    <view class='item-name'>
+      <view class='left-line'></view>
+      <view class='text'>手机号码：</view>
+    </view>
+    <view class="item-input">
+      <input type="username" class="a-input" value="{{realName}}"  />
+    </view>
+  </view>
+
+  <view class="item">
+    <view class='item-name'>
+      <view class='left-line'></view>
+      <view class='text'>性别：</view>
+    </view>
+    <view class="item-checked">
+    <van-radio-group value="{{ radio }}" bind:change="onChange" direction="horizontal">
+      <van-radio name="1" checked-color="#07c160">单选框 1</van-radio>
+      <van-radio name="2" checked-color="#07c160">单选框 2</van-radio>
+    </van-radio-group>
+    </view>
+  </view>
+
+  <view class="item">
+    <view class='item-name'>
+      <view class='left-line'></view>
+      <view class='text'>学院：</view>
+    </view>
+    <view class="item-input">
+      <select-checkbox style="width:100%" title-width="70" place="请选择所在学院" list="{{ list }}" bind:sync="getSelectBox" checkSelectedFaculty=""></select-checkbox>
+    </view>
+  </view>
+
+</view>

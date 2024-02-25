@@ -90,6 +90,11 @@ getSonBookID(e){
         title: "图书列表",
       })
     }
+    if( options.pt==='4'){
+      wx.setNavigationBarTitle({
+        title: "我的收藏",
+      })
+    }
     //将bookList传递给组件渲染页面
     let bookList=JSON.parse(options.bookList)
     //带有特殊字符&需要进行编码和解码
