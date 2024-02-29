@@ -1,4 +1,5 @@
 <!--pages/user/userdetail/userdetail.wxml-->
+<van-notify id="van-notify" />
 <view class="ud-container">
   <view class="item">
     <view class='item-name'>
@@ -6,7 +7,7 @@
       <view class='text'>姓名：</view>
     </view>
     <view class="item-input">
-      <input type="username" class="a-input" value="{{realName}}"  />
+      <input type="realname" class="a-input" value="{{realName}}"  bindinput="bindinputRealName" bindblur="bindinputRealName"/>
     </view>
   </view>
 
@@ -16,22 +17,11 @@
       <view class='text'>手机号码：</view>
     </view>
     <view class="item-input">
-      <input type="username" class="a-input" value="{{realName}}"  />
+      <input type="telephone" class="a-input" value="{{telephone}}" bindinput="bindinputTelephone" bindblur="bindinputTelephone" />
     </view>
   </view>
 
-  <view class="item">
-    <view class='item-name'>
-      <view class='left-line'></view>
-      <view class='text'>性别：</view>
-    </view>
-    <view class="item-checked">
-    <van-radio-group value="{{ radio }}" bind:change="onChange" direction="horizontal">
-      <van-radio name="1" checked-color="#07c160">单选框 1</van-radio>
-      <van-radio name="2" checked-color="#07c160">单选框 2</van-radio>
-    </van-radio-group>
-    </view>
-  </view>
+
 
   <view class="item">
     <view class='item-name'>
@@ -39,8 +29,35 @@
       <view class='text'>学院：</view>
     </view>
     <view class="item-input">
-      <select-checkbox style="width:100%" title-width="70" place="请选择所在学院" list="{{ list }}" bind:sync="getSelectBox" checkSelectedFaculty=""></select-checkbox>
+    <!-- 下拉框选项组件 -->
+      <select-popup  place="请选择学院" columns="{{facultList}}" bind:confirm="getSelectFacult" valueKeyName="name" selectedValue="{{myFacult}}"></select-popup>
     </view>
   </view>
+
+  <view class="item">
+    <view class='item-name'>
+      <view class='left-line'></view>
+      <view class='text'>班级：</view>
+    </view>
+    <view class="item-input">
+    <!-- 下拉框选项组件 -->
+      <select-popup  place="请选择年级" columns="{{gradeList}}" bind:confirm="getSelectGrade" valueKeyName="name" selectedValue="{{myGrade}}"></select-popup>
+    </view>
+  </view>
+
+  <view class="item">
+    <view class='item-name'>
+      <view class='left-line'></view>
+      <view class='text'>专业：</view>
+    </view>
+    <view class="item-input">
+    <!-- 下拉框选项组件 -->
+      <select-popup  place="请选择专业" columns="{{majorList}}" bind:confirm="getSelectMajor" valueKeyName="name" selectedValue="{{myMajor}}"></select-popup>
+    </view>
+  </view>
+
+<view class="item">
+  <van-button type="info" size="large" round bind:tap="toComfirmInfo">确定</van-button>
+</view>
 
 </view>

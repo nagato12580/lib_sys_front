@@ -1,6 +1,8 @@
 // pages/bookdetail/bookdetail.js
 var Request = require("../../../apis/request.js")
 var Api = require("../../../apis/api.js")
+import Dialog from '@vant/weapp/dialog/dialog';
+import Notify from '@vant/weapp/notify/notify';
 Page({
 
   /**
@@ -22,7 +24,6 @@ Page({
   onClose() {
     this.setData({ showShare: false });
   },
-
   onSelect(event) {
     Toast(event.detail.name);
     this.onClose();
@@ -38,8 +39,21 @@ Page({
         })
       }
     })
-
   },
+  //获取图书详细数据
+getBookDetailIndo(id){
+  var that=this
+  Request.request(Api.book+`/${id}/`,{},'GET').then(
+    function(res){
+      that.setData({
+        'bookDetail':res.data
+      })
+      wx.setNavigationBarTitle({
+        title: res.data.bookTitle,
+      })
+    }
+  )
+},
   //查看图书状态
   getStarStatus(id){
     var book_id=id
@@ -61,6 +75,47 @@ Page({
         })
       }
     })
+  },
+  //借阅
+  onClickButton(){
+
+    Dialog.alert({
+      title: '温馨提醒',
+      message: '借阅期限为90天，请您在按时归还图书',
+    }).then(() => {
+      // on close
+        // 允许从相机和相册扫码
+        wx.scanCode({
+          onlyFromCamera:true,
+          scanType:['barCode'],
+          success:res=>{
+            if(res.result==this.data.bookDetail.ISBN){
+              console.log("图书相符")
+              var id=this.data.bookDetail.id
+              var that=this
+              Request.request(Api.borrow,{'book':id},'POST').then(
+                function(res){
+                  if(res.statusCode==201){
+                    Notify({ type: 'success', message: '借阅成功' });
+                    //更新馆藏数据
+                    that.getBookDetailIndo(id)
+                  }
+                  if(res.statusCode==400){
+                    Notify({ type: 'warning', message: '库存不足' });
+                  }
+                }
+              )
+            }
+            else{
+              Notify({ type: 'warning', message: '图书不符' });
+            }
+            console.log(res.result)
+          },
+          fail:err=>{
+            console.log(err);
+          }
+        })
+    });
 
 
   },
@@ -75,16 +130,7 @@ Page({
     //获取图书id
     var that=this
     var id=options.id
-    Request.request(Api.book+`/${id}/`,{},'GET').then(
-      function(res){
-        that.setData({
-          'bookDetail':res.data
-        })
-        wx.setNavigationBarTitle({
-          title: res.data.bookTitle,
-        })
-      }
-    )
+    this.getBookDetailIndo(id)
     this.getStarStatus(id)
   },
 

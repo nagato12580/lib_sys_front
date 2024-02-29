@@ -3,7 +3,9 @@
     "van-share-sheet": "@vant/weapp/share-sheet/index",
     "van-icon": "@vant/weapp/icon/index",
     "van-row": "@vant/weapp/row/index",
-    "van-col": "@vant/weapp/col/index"
+    "van-col": "@vant/weapp/col/index",
+    "van-dialog": "@vant/weapp/dialog/index",
+    "van-notify": "@vant/weapp/notify/index"
   },
   "styleIsolation": "shared"
 }

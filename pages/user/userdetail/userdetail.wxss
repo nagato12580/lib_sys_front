@@ -27,6 +27,11 @@ page {
 .item-input{
   margin-bottom: 10rpx;
 }
+.button-item{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 
 

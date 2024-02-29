@@ -1,5 +1,6 @@
 <!--pages/bookdetail/bookdetail.wxml-->
 <!-- 图片 -->
+<van-notify id="van-notify" />
 <view class="image-container">
 <image src="{{bookDetail.book_info.image_url}}" mode="aspectFit" ></image>
 </view>
@@ -69,7 +70,7 @@
         <view class="box-title">
           <van-icon name="play" size="10px" color="#00b26a"/> 已借出数：
         </view>
-        <view class="box-detail">{{bookDetail.lib_info.stockNumber}}</view>
+        <view class="box-detail">{{bookDetail.lib_info.checkedOutBooks}}</view>
       </view>
       <!-- 剩余馆藏数 -->
       <view class="box-container">
@@ -101,9 +102,10 @@
     <van-goods-action-icon icon="star-o" text="收藏" color="" bind:click="onClickIcon" />
   </block>
   <van-goods-action-button
-    text="借阅"
+    text="扫一扫借阅"
     type="primary"
     color="#1989fa"
     bind:click="onClickButton"
   />
 </van-goods-action>
+<van-dialog id="van-dialog" />
