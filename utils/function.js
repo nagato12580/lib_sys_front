@@ -55,7 +55,25 @@ function downloadFile(url) {
       }
     })
 }
+function getNextFormattedDate() {
+  const currentDate = new Date();
+  
+  // 获取当前日期的时间戳，并加上一天的毫秒数
+  const nextDayTimestamp = currentDate.getTime() + 24 * 60 * 60 * 1000;
+
+  // 创建新的 Date 对象，并设置为下一天
+  const nextDay = new Date(nextDayTimestamp);
+
+  // 获取年、月、日
+  const year = nextDay.getFullYear();
+  const month = (nextDay.getMonth() + 1).toString().padStart(2, '0');
+  const day = nextDay.getDate().toString().padStart(2, '0');
+
+  return `${year}-${month}-${day}`;
+}
+
 module.exports = {
   getUrlParasObj: getUrlParasObj,
-  downloadFile:downloadFile
+  downloadFile:downloadFile,
+  getNextFormattedDate:getNextFormattedDate,
 }

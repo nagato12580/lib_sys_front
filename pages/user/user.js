@@ -130,6 +130,7 @@ Page({
     Request.request(api.getUserInfo,{},'GET').then(function (res) {
       if (res.statusCode==200) {
         let userInfo={
+          'id':res.data.id,
           'username':res.data.username,
           'wx_photo':res.data.wx_photo
         }
@@ -147,6 +148,23 @@ Page({
           url: '/pages/user/mystar/mystar',
         })
       }
+  },
+  //获取我的借阅
+  toMyBorrowBook(){
+    if(this.data.hasUserInfo){
+      wx.navigateTo({
+        url: '/pages/user/borrow/borrow',
+      })
+    }
+  },
+  //获取我的留言
+  toMyMessage(){
+    if(this.data.hasUserInfo){
+      var id=this.data.userInfo.id
+      wx.navigateTo({
+        url: '/pages/user/mymessage/mymessage?id='+id,
+      })
+    }
   },
   //获取我的资料
   toMyDetailInfo(){

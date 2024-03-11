@@ -1,0 +1,10 @@
+<!--pages/message/message.wxml-->
+<van-cell value="{{item.created_time}}" is-link wx:for="{{messageList}}" bind:tap="getMessageDetail" data-id="{{item.id}}">
+  <view slot="title">
+    <view class="van-cell-text">{{item.title}}</view>
+    <view class="van-cell-count">回复：{{item.comment_count}}</view>
+  </view>
+</van-cell>
+<view class="round-click" bind:tap="toMessageEdit">
+       <view>发布留言</view>
+</view>

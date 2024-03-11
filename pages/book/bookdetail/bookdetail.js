@@ -119,6 +119,14 @@ getBookDetailIndo(id){
 
 
   },
+  //跳转留言界面
+  onClickMessage(){
+    var id=this.data.bookDetail.id
+    wx.navigateTo({
+      url: '/pages/message/message?book_id='+id,
+    })
+
+  },
 
 
 

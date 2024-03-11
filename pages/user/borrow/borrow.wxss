@@ -1,0 +1,69 @@
+/* components/book-list/book-list.wxss */
+/* pages/chart/chart.wxss */
+
+.num-item{
+  border: 1rpx solid black;
+  border-radius: 8rpx;
+  line-height: 200rpx;/*行高*/
+  margin: 15rpx;/*外边距*/
+  text-align: center;/*文本横向居中*/
+  text-shadow: 0rpx 0rpx 5rpx #fff;/*文本阴影 参数分别是：横向偏移，纵向偏移，扩散，颜色，下同*/
+  box-shadow: 1rpx 1rpx 6rpx #aaa;
+}
+.book-item{
+  display: flex;/*使得该view里面的元素水平布局*/
+  padding: 15rpx;
+  border:1rpx solid #efefef;
+  margin: 15rpx;
+  border-radius: 8rpx;
+  box-shadow: 1rpx 1rpx 10rpx #ddd;
+}
+.thumb image{
+  width: 160rpx;
+  height: 210rpx;
+  display: block;
+  margin-right: 15rpx;
+}
+.info{
+  /*一下两项使得文字垂直布局*/
+  display: flex;
+  flex-direction: column;
+  /*使其均匀分布再容器中*/
+  justify-self: space-around;
+  font-size: 30rpx;
+}
+
+.book-title{
+  font-size: 36rpx;
+  font-weight: bold;
+  overflow:hidden;    /*超出一行文字自动隐藏*/
+  text-overflow:ellipsis;    /*文字隐藏后添加省略号*/
+  white-space:nowrap;    /*强制不换行*/
+}
+.introduction-item{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  /*! autoprefixer: off */
+  -webkit-box-orient: vertical;
+  color: dimgray;
+}
+.borrow-container{
+  display: flex;
+  flex-direction: row;
+
+}
+.borrow-item{
+  display: flex;
+  flex-direction: column;
+  padding-top: 12rpx;
+  font-size: 30rpx;
+  color: dimgray;
+}
+.btu-item{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 50rpx;
+}

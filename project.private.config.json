@@ -10,6 +10,34 @@
     "miniprogram": {
       "list": [
         {
+          "name": "pages/reservation/reservation",
+          "pathName": "pages/reservation/reservation",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/message/messagedetail/messagedetail",
+          "pathName": "pages/message/messagedetail/messagedetail",
+          "query": "message_id=1",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/test/test",
+          "pathName": "pages/test/test",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/test",
+          "pathName": "pages/test",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "pages/user/userdetail/userdetail",
           "pathName": "pages/user/userdetail/userdetail",
           "query": "",
@@ -40,13 +68,6 @@
         {
           "name": "pages/home/home",
           "pathName": "pages/home/home",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "pages/chart/chart",
-          "pathName": "pages/chart/chart",
           "query": "",
           "launchMode": "default",
           "scene": null

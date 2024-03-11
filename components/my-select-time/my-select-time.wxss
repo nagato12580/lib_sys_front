@@ -1,0 +1,59 @@
+
+.seat-time{
+  display: flex;
+  justify-content: space-between; /* 设置子组件水平布局，可根据需要调整对齐方式 */
+  padding-bottom: 150rpx;
+  height: 1280rpx;
+}
+.time-colum{
+  width: 188rpx;
+  background-color: rgb(213, 239, 250);
+  display: flex;
+  flex-direction: column;
+}
+.time-colum .time-item{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80rpx;
+  font-size: 30rpx;
+  box-sizing: border-box; /* 防止边框撑大元素 */
+}
+.seat-container{
+  background-color: rgb(246, 246, 252);
+  width: 562rpx;
+  white-space: nowrap;
+  height: 1280rpx;
+
+
+}
+.used-col{
+  width: 90rpx;
+  display: inline-block;
+  height: 1280rpx;
+  box-sizing: border-box; /* 防止边框撑大元素 */
+}
+.col-name{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80rpx;
+  white-space: normal; /* 设置文字换行，可以是 normal 或 break-spaces，根据需要调整 */
+  border: rgb(255, 255, 255) solid 1px;
+  box-sizing: border-box; /* 防止边框撑大元素 */
+}
+.reser-time{
+  height: 1200rpx;
+  display: flex;
+  flex-direction: column;
+}
+.one-time{
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: rgb(255, 255, 255) solid 1rpx;
+
+}
+
+

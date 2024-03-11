@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "book-type": "/components/book-sencond-type/book-second-type"
+    "book-type": "/components/book-sencond-type/book-second-type",
+    "van-search": "@vant/weapp/search/index"
   },
   "styleIsolation": "shared"
   

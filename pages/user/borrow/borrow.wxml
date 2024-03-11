@@ -1,0 +1,40 @@
+<van-notify id="van-notify" />
+<van-tabs active="{{ active }}" bind:change="onChange" sticky color="#429efb" bind:click="onClick">
+  <van-tab title="未归还">
+      <view wx:for="{{myNoReturnedList}}" wx:key="{{index}}" class="book-item" bind:tap="toBookDetail" data-id="{{item.id}}">
+        <view class="thumb">
+          <image src="{{item.image}}"></image>
+        </view>
+      <view class="info">
+        <text class="book-title">{{item.bookTitle}}</text>
+        <text class="introduction-item">{{item.introduction}}</text>
+        <view class="borrow-container">
+          <view class="borrow-item">
+            <text>借阅日期：{{item.borrowing_date}}</text>
+            <text>到期时间：{{item.return_data}}</text>
+          </view>
+          <view class="btu-item">
+            <van-button type="info" round size="small" plain catch:tap="toReturnedBook" data-ISBN="{{item.ISBN}}" data-id="{{item.id}}">归还图书</van-button>
+          </view>
+        </view>
+      </view>
+    </view>
+  </van-tab>
+  <van-tab title="已归还">
+    <view wx:for="{{myReturnedList}}" wx:key="{{index}}" class="book-item" catch:tap="toBookDetail" data-id="{{item.id}}">
+        <view class="thumb">
+          <image src="{{item.image}}"></image>
+        </view>
+      <view class="info">
+        <text class="book-title">{{item.bookTitle}}</text>
+        <text class="introduction-item">{{item.introduction}}</text>
+        <view class="borrow-container">
+          <view class="borrow-item">
+            <text>借阅日期：{{item.borrowing_date}}</text>
+            <text>归还日期：{{item.total_return_data}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </van-tab>
+</van-tabs>

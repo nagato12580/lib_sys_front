@@ -42,6 +42,7 @@ Component({
       // event.detail 的值为当前选中项的索引,这里更新全局store的值
       this.updateActive(event.detail)
       var url=''
+      console.log(event.detail)
       switch (event.detail) {
         case 0:
           url='/pages/home/home';
@@ -50,7 +51,7 @@ Component({
           url='/pages/book/book';
           break;  
         case 2:
-          url='/pages/borrow/borrow';
+          url='/pages/reservation/reservation';
           break;    
         case 3:
           url='/pages/user/user';
@@ -58,8 +59,9 @@ Component({
         default:
           break;
       }
+      console.log(url)
       wx.switchTab({
-        'url': url,
+        url: url,
       })
     },
 

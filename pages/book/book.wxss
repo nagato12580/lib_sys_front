@@ -1,5 +1,10 @@
 /* pages/book/book.wxss */
 /*侧边栏的样式*/
+page {
+  width: 100%;
+  height: 100%;
+}
+
 .container1{
   border-right: gainsboro solid 1px;
   width: 180rpx;

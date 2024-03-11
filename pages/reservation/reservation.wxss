@@ -1,0 +1,20 @@
+/* pages/reservation/reservation.wxss */
+.floor-container{
+  margin-top: 30rpx;
+}
+.overall-title{
+  text-align: center;
+  margin-bottom: 20rpx;
+}
+.overall-box{
+  display: flex;
+  flex-wrap: wrap;
+  /* background-color: #dbdbdb; 设置背景色，根据需要调整 */
+}
+.round-item{
+  width: 30%; /* 设置每个子项的宽度，根据需要调整 */
+  margin: 10rpx; /* 设置子项之间的间距，根据需要调整 */
+  text-align: center; /* 设置文本居中，根据需要调整 */
+  padding: 10rpx; /* 设置内边距，根据需要调整 */
+  box-sizing: border-box; /* 防止边框撑大元素 */
+}

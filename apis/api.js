@@ -5,16 +5,20 @@ import { request } from './request'
 
 // let host = 'http://192.168.4.117:8001'
 
-let host = 'http://192.168.1.108:8000'
+let host = 'http://192.168.1.105:8000'
 
 // 获取热门书籍
 var PopularBooklist=host + '/api/borrow/get_popular'
 //借阅相关url
 var Borrow = host + '/api/borrow/'
+var myBorrow = host + '/api/borrow/get_my_borrow/'
+var returned = host + '/api/borrow/returned/'//归还图书
+
 //书籍分类相关url
 var Category=host + '/api/category'
 //书籍相关url
 var Book=host + '/api/book'
+var bookSearch=host + '/api/book/search/'
 
 //轮播图相关url
 var Swiper=host + '/api/swiper'
@@ -44,13 +48,21 @@ var cancelStar = host+'/api/collection/cancel/'
 var facult = host+'/api/faculty/'
 //专业接口
 var getFacultMajor = host+'/api/major/get_facult_major/'
+
+//留言相关接口
+var bookMessage = host+'/api/message/'
+//评论相关接口
+var comment = host+'/api/mptt_comment/'
+var secondComment =host+'/api/mptt_comment/seconde_reply/'
 module.exports = {
   borrow:Borrow,
+  myBorrow:myBorrow,
   popularBooklist:PopularBooklist,
   category:Category,
   swiper:Swiper,
   notice:Notice,
   book:Book,
+  bookSearch:bookSearch,
   login:login,
   upLoad:upLoad,
   upDateInfo:upDateInfo,
@@ -60,6 +72,10 @@ module.exports = {
   cancelStar:cancelStar,
   facult:facult,
   getFacultMajor:getFacultMajor,
-  toComfirmInfo:toComfirmInfo
+  toComfirmInfo:toComfirmInfo,
+  returned:returned,
+  bookMessage:bookMessage,
+  comment:comment,
+  secondComment:secondComment
 
 }

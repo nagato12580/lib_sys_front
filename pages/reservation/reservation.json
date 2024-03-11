@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "预约",
+  "usingComponents": {
+    "van-tabbar": "@vant/weapp/tabbar/index",
+    "van-tabbar-item": "@vant/weapp/tabbar-item/index",
+    "van-circle": "@vant/weapp/circle/index",
+    "select-popup": "/components/select-popup/select-popup",
+    "select-checkbox": "/components/select-checkbox/select-checkbox",
+    "my-select-time":"/components/my-select-time/my-select-time"
+  }
+}

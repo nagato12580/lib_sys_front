@@ -1,0 +1,17 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="section">
+    <text class="label">标题：</text>
+    <input class="input" placeholder="请输入标题,最多50个字" bindinput="bindTitleInput" maxlength="50"/>
+  </view>
+
+  <view class="section">
+    <text class="label">内容：</text>
+    <textarea class="textarea" placeholder="请输入主题内容,最多200个字" bindinput="bindContentInput" maxlength="200"></textarea>
+  </view>
+  <view class="warning">字数统计：{{contentCount}}</view>
+
+  <view class="section">
+    <button class="publish-btn" bindtap="publishTheme">发布主题</button>
+  </view>
+</view>

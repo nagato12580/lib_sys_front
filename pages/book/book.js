@@ -117,5 +117,11 @@ Page({
     wx.navigateTo({
       url: '/pages/chart/chart?pt=3&bookList='+bookList+'&nextUrl='+nextUrl,
     })
+  },
+  toSearchPage(){
+    wx.navigateTo({
+      url: '/pages/book/search/search',
+    })
   }
+
 })

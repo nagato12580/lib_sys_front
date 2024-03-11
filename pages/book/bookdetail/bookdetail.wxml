@@ -95,6 +95,7 @@
     bind:close="onClose"
     overlay="{{false}}"
   />
+  <van-goods-action-icon icon="chat-o" text="留言" bind:click="onClickMessage" />
   <block wx:if="{{isStar}}">
     <van-goods-action-icon icon="star-o" text="收藏" color="{{icon_color}}" bind:click="cancelStar" />
   </block>

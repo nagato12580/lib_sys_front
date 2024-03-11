@@ -15,12 +15,12 @@
 <view class="container1-item" wx:for="{{menu}}">{{item}}</view>
 </scroll-view> -->
 
-<van-search value="{{ value }}" shape="round" placeholder="请输入搜索关键词" />
+<van-search value="{{ value }}" disabled placeholder="请输入搜索关键词" bind:tap="toSearchPage" />
 
-<view class="book-container">
-  <view class="type-list">
-    <van-sidebar active-key="{{ activeKey }}" bind:change="onChange" >
-      <van-sidebar-item title="{{item.name}}" wx:for="{{typeList}}"  />
+<view class="book-container" >
+  <view class="type-list" >
+    <van-sidebar active-key="{{ activeKey }}" bind:change="onChange" custom-class="height: 100%;width:100%">
+      <van-sidebar-item title="{{item.name}}" wx:for="{{typeList}}" custom-class="height: 100%;width:100%" />
     </van-sidebar>
   </view>
   <view class="book-second-type">

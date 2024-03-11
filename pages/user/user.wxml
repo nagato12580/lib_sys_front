@@ -85,10 +85,10 @@
     </view>
     <!-- 我的留言 -->
     <view class="order-container">
-        <view class='header' data-index='0' bindtap='toOrderListTap'>
+        <view class='header' data-index='0' bindtap='toMyMessage'>
             <view class='top-title'>
               <image  class='icon' src="../../images/icon/message.png"></image>
-                <view class='text'>我的消息</view>
+                <view class='text'>我的留言</view>
             </view>
             <view class='see-more'>
                 <view class="text"></view>
@@ -96,5 +96,19 @@
             </view>
         </view>
     </view>
+    <!-- 我的反馈 -->
+    <view class="order-container">
+        <view class='header' data-index='0' bindtap='toMyFeedback'>
+            <view class='top-title'>
+              <image  class='icon' src="../../images/icon/message.png"></image>
+                <view class='text'>我的反馈</view>
+            </view>
+            <view class='see-more'>
+                <view class="text"></view>
+                <view class="arrow"></view>
+            </view>
+        </view>
+    </view>
+
 
 </view>

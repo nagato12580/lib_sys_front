@@ -1,0 +1,50 @@
+<view class="message-container">
+  <view class="theme-container">
+    <view class="theme-message">标题：{{messageTheme}}
+    </view>
+    <view class="theme-content">{{messageContent}}
+    </view>
+    <view class="theme-data">{{messageDate}}
+    </view>
+  </view>
+  <view class="reply" wx:for="{{commentList}}" >
+    <view class="avatar ">
+        <image src="{{item.wx_photo}}"></image>
+    </view>
+    <view class="info">
+      <view class="name ">{{item.username}}</view>
+      <view class="content ">{{item.comment_content}}</view>
+      <view class="date-reply">
+        <text>{{item.created_time}}</text>
+        <view class="comment-reply" catch:tap="toInputReply" data-parent_id="{{item.id}}" data-comment_user_id="{{item.comment_user_id}}">回复</view>
+      </view>
+      <view class="reply-containr" bind:tap="toCommentReply" data-index="{{index}}">
+        <view>
+        <view class="second-reply" wx:for="{{item.childrens}}">
+          <view class="second-avatar">
+            <image src="{{item.wx_photo}}"></image>
+          </view>
+          <view class="second-info">
+            <view class="name ">{{item.comment_user_username}} 回复 {{item.reply_to_username}}</view>
+            <view class="second-content">{{item.comment_content}}</view>
+            <view class="date-reply">
+              <text>{{item.created_time}}</text>
+              <view class="comment-reply" catch:tap="toInputReply" data-parent_id="{{item.id}}" data-comment_user_id="{{item.comment_user_id}}">回复</view>
+            </view>
+          </view>
+        </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="bottom-warning">------已经到底啦------</view>
+  <!-- 底部输入框 -->
+  <view class="bottom-textarea" >
+      <view class="textarea-container" style="bottom:{{inputBottom}}px">
+        <textarea bindblur="bindContentInput" bindinput="bindContentInput"  placeholder="请输入内容" maxlength="200" 	show-confirm-bar="{{false}}" value="{{comment_content}}"  adjust-position='{{true}}' cursor-spacing='20' focus="{{toInput}}"/>
+      </view>
+      <view class="button-container">
+        <van-button round type="info" size="mini" bind:click="toPostReply">发送</van-button>
+      </view>
+  </view>
+</view>

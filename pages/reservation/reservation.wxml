@@ -1,0 +1,61 @@
+<!--pages/reservation/reservation.wxml-->
+<view class="overall-title">当前座位使用情况</view>
+<view class="overall-box">
+  <view class="round-item">
+    <van-circle
+      value="{{ 30 }}"
+      layer-color="#eeeeee"
+      color="#a0c6e8"
+      text="负一楼"
+    />
+  </view>
+  <view class="round-item">
+    <van-circle
+      value="{{ 30 }}"
+      layer-color="#eeeeee"
+      color="#a0c6e8"
+      text="一楼"
+    />
+  </view>
+  <view class="round-item">
+    <van-circle
+      value="{{ 30 }}"
+      layer-color="#eeeeee"
+      color="#a0c6e8"
+      text="二楼"
+    />
+  </view>
+  <view class="round-item">
+    <van-circle
+      value="{{ 30 }}"
+      layer-color="#eeeeee"
+      color="#a0c6e8"
+      text="三楼"
+    />
+  </view>
+  <view class="round-item">
+    <van-circle
+      value="{{ 30 }}"
+      layer-color="#eeeeee"
+      color="#a0c6e8"
+      text="四楼"
+    />
+  </view>
+  <view class="round-item">
+    <van-circle
+      value="{{ 30 }}"
+      layer-color="#eeeeee"
+      color="#a0c6e8"
+      text="五楼"
+    />
+  </view>
+
+</view>
+<view class=""></view>
+    <view class="reservation-container">
+    <!-- 下拉框选项组件 -->
+    <select-popup label="选择楼层：" place="请选择楼层" columns="{{list}}" bind:confirm="getSelectProject" valueKeyName="name"></select-popup>
+    <select-checkbox style="width:100%" label="选择时间段：" title-width="70" place="请选择预约时间段" list="{{ list }}" bind:sync="getSelectBox" checkSelected=""></select-checkbox>
+    <select-popup label="选择座位：" place="请选择座位" columns="{{list}}" bind:confirm="getSelectProject" valueKeyName="name"></select-popup>
+    <my-select-time/>
+    </view>

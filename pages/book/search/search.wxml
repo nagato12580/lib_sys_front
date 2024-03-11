@@ -1,0 +1,3 @@
+<!--pages/book/search/search.wxml-->
+<van-search value="{{ value }}" placeholder="请输入搜索关键词" bind:search="getSearchRes" bind:change="setValue"/>
+<book-list book-list="{{bookList}}" bind:clickBookId="getSonBookID"></book-list>
