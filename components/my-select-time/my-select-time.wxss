@@ -2,8 +2,9 @@
 .seat-time{
   display: flex;
   justify-content: space-between; /* 设置子组件水平布局，可根据需要调整对齐方式 */
-  padding-bottom: 150rpx;
   height: 1280rpx;
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
 }
 .time-colum{
   width: 188rpx;

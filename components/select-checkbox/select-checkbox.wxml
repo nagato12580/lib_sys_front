@@ -2,7 +2,7 @@
     <van-field label="{{label}}" model:value="{{ checkSelected }}"  placeholder="{{ place }}" border="{{ true }}" readonly
         right-icon="{{icon}}" bindtap="showPopup" />
  
-    <van-popup show="{{ show }}" bind:close="onClose" position="bottom" custom-style="height: 60%;overflow:hidden;padding:10rpx 0rpx;">
+    <van-popup show="{{ show }}" bind:close="onClose" position="bottom" custom-style="height: 80%;padding:10rpx 0rpx;">
         <!-- 取消、确定按钮 -->
         <view class="cityheader">
             <view bindtap="cancel" class="city-cancel">取消</view>
@@ -31,7 +31,8 @@
                 />
                 </van-cell>
             </van-cell-group>
-        </van-checkbox-group>
+          </van-checkbox-group>
+
     </van-popup>
 </view>
  

@@ -5,8 +5,8 @@
   </view>
 </view>
 <scroll-view class="seat-container" scroll-x="true">
-    <view class="used-col" wx:for="{{seatList}}">
-    <view class="col-name">{{item.num}}</view>
+    <view class="used-col" wx:for="{{list}}">
+    <view class="col-name">{{item.seat_number}}</view>
       <view class="reser-time">
         <view wx:for="{{item.usedList}}" class="one-time" style="{{ item === 1 ? 'background-color: #57a9fb;' : 'background-color: #e0e0e0;' }}">{{item}}</view>
       </view>

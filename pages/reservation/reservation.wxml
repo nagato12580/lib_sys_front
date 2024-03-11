@@ -54,8 +54,12 @@
 <view class=""></view>
     <view class="reservation-container">
     <!-- 下拉框选项组件 -->
-    <select-popup label="选择楼层：" place="请选择楼层" columns="{{list}}" bind:confirm="getSelectProject" valueKeyName="name"></select-popup>
-    <select-checkbox style="width:100%" label="选择时间段：" title-width="70" place="请选择预约时间段" list="{{ list }}" bind:sync="getSelectBox" checkSelected=""></select-checkbox>
-    <select-popup label="选择座位：" place="请选择座位" columns="{{list}}" bind:confirm="getSelectProject" valueKeyName="name"></select-popup>
-    <my-select-time/>
+    <select-popup label="选择楼层：" place="请选择楼层" columns="{{floorList}}" bind:confirm="getSelectFloor" valueKeyName="name"></select-popup>
+    <my-select-time list="{{floorSeatListDetail}}"></my-select-time>
+    <select-popup label="选择座位：" place="请选择座位" columns="{{floorSeatList}}" bind:confirm="selectPeriod" valueKeyName="name" selectedValue="{{selectedSeat}}"></select-popup>
+    <select-checkbox style="width:100%" label="选择时间段：" title-width="70" place="请选择预约时间段" list="{{ avaliableList }}" bind:sync="getSelectBox" checkSelected="{{checkSelected}}" reset="{{reset}}"></select-checkbox>
+    <view class="button-item">
+      <van-button  plain type="info" size="large" round bind:tap="toComfirmInfo">确定</van-button>
+    </view>
+
     </view>

@@ -61,11 +61,13 @@ Component({
       pic = this.selectComponent('#picker')
       // 获取当前选中项的值  改值为对象
       value = pic.getValues()
+      // console.log(e)
       this.setData({
         value: value[0][this.data.valueKeyName],  // 设置输入框为选择器选中的值
       })
       this.triggerEvent('confirm', {  // 传递到组件外事件 ， 返回当前选中项 对象
-        value: value[0]
+        value: value[0],
+        index:e.detail.index
       })
       this.onCancel()
     }

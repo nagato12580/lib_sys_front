@@ -54,6 +54,12 @@ var bookMessage = host+'/api/message/'
 //评论相关接口
 var comment = host+'/api/mptt_comment/'
 var secondComment =host+'/api/mptt_comment/seconde_reply/'
+
+//预约相关接口
+var seat=host+'/api/seat/'
+var floorSeat = host+'/api/seat/floor_seat/'
+var reservation=host+'/api/reservation/'
+
 module.exports = {
   borrow:Borrow,
   myBorrow:myBorrow,
@@ -76,6 +82,9 @@ module.exports = {
   returned:returned,
   bookMessage:bookMessage,
   comment:comment,
-  secondComment:secondComment
+  secondComment:secondComment,
+  seat:seat,
+  floorSeat:floorSeat,
+  reservation:reservation
 
 }
