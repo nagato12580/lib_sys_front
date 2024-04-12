@@ -1,9 +1,13 @@
 <!--pages/reservation/reservation.wxml-->
-<view class="overall-title">当前座位使用情况</view>
-<view class="overall-box">
+
+<van-tabs active="{{ active }}" bind:change="onChange" color="#47a0fb">
+  <van-tab title="{{todayDate}}">
+    <view class="overall-title">{{todayDate}}日座位使用情况</view>
+    <!-- 可视化小圆圈 -->
+    <view class="overall-box">
   <view class="round-item">
     <van-circle
-      value="{{ 30 }}"
+      value="{{ overviewTodayRes[0] }}"
       layer-color="#eeeeee"
       color="#a0c6e8"
       text="负一楼"
@@ -11,7 +15,7 @@
   </view>
   <view class="round-item">
     <van-circle
-      value="{{ 30 }}"
+      value="{{ overviewTodayRes[1] }}"
       layer-color="#eeeeee"
       color="#a0c6e8"
       text="一楼"
@@ -19,7 +23,7 @@
   </view>
   <view class="round-item">
     <van-circle
-      value="{{ 30 }}"
+      value="{{ overviewTodayRes[2] }}"
       layer-color="#eeeeee"
       color="#a0c6e8"
       text="二楼"
@@ -27,7 +31,7 @@
   </view>
   <view class="round-item">
     <van-circle
-      value="{{ 30 }}"
+      value="{{ overviewTodayRes[3] }}"
       layer-color="#eeeeee"
       color="#a0c6e8"
       text="三楼"
@@ -35,7 +39,7 @@
   </view>
   <view class="round-item">
     <van-circle
-      value="{{ 30 }}"
+      value="{{ overviewTodayRes[4] }}"
       layer-color="#eeeeee"
       color="#a0c6e8"
       text="四楼"
@@ -43,23 +47,34 @@
   </view>
   <view class="round-item">
     <van-circle
-      value="{{ 30 }}"
+      value="{{ overviewTodayRes[5] }}"
       layer-color="#eeeeee"
       color="#a0c6e8"
       text="五楼"
     />
   </view>
 
-</view>
-<view class=""></view>
-    <view class="reservation-container">
+    </view>
+    <select-popup label="选择楼层：" place="请选择楼层" columns="{{floorList}}" bind:confirm="getTodaySelectFloor" valueKeyName="name"></select-popup>
+    <my-select-time list="{{toDayFloorSeatListDetail}}"></my-select-time>
+
+  </van-tab>
+  <van-tab title="{{tomorrowDate}}">
+    <view>
+  <view class="overall-title">{{tomorrowDate}}日座位使用情况</view>
+
+<view class="reservation-container">
     <!-- 下拉框选项组件 -->
     <select-popup label="选择楼层：" place="请选择楼层" columns="{{floorList}}" bind:confirm="getSelectFloor" valueKeyName="name"></select-popup>
-    <my-select-time list="{{floorSeatListDetail}}"></my-select-time>
-    <select-popup label="选择座位：" place="请选择座位" columns="{{floorSeatList}}" bind:confirm="selectPeriod" valueKeyName="name" selectedValue="{{selectedSeat}}"></select-popup>
-    <select-checkbox style="width:100%" label="选择时间段：" title-width="70" place="请选择预约时间段" list="{{ avaliableList }}" bind:sync="getSelectBox" checkSelected="{{checkSelected}}" reset="{{reset}}"></select-checkbox>
+    <my-select-time list="{{nextDayFloorSeatListDetail}}"></my-select-time>
+    <select-popup label="选择座位：" place="请选择座位" columns="{{nextDayFloorSeatList}}" bind:confirm="selectPeriod" valueKeyName="name" selectedValue="{{selectedSeat}}"></select-popup>
+    <select-checkbox style="width:100%" label="选择时间段：" title-width="70" place="请选择预约时间段" list="{{ avaliableList }}" bind:sync="getSelectBox" checkSelected="{{checkSelected}}" reset="{{reset}}" ></select-checkbox>
     <view class="button-item">
       <van-button  plain type="info" size="large" round bind:tap="toComfirmInfo">确定</van-button>
     </view>
+</view>
 
-    </view>
+</view>
+  </van-tab>
+</van-tabs>
+

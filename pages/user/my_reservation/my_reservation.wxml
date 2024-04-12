@@ -1,0 +1,51 @@
+<van-notify id="van-notify" />
+
+<view class="reservation-item" wx:for="{{no_used_seat}}">
+      <view class="seat-title">{{item.floor}}第{{item.seat_number}}号座位</view>
+      <view class="period-list">
+        <text>预约时间:  {{item.appointment_date}}</text>
+        <view class="period-container">
+          <view class="period-item" wx:for="{{item.period}}" style="width: 30%;padding: 10rpx 10rpx 10rpx 10rpx;">
+          <text>{{item}}</text>
+          </view>
+        </view>
+      </view>
+      <view class="but-item">
+        <!-- <van-button plain round type="info" bind:click="toUseSeat" data-seat_id="{{item.seat_id}}"data-index="{{index}}">扫一扫</van-button> -->
+        <van-button round plain type="warning" bind:click="toCancel" data-index="{{index}}">取消预约</van-button>
+      </view>
+</view>
+<van-popup show="{{ show }}" bind:close="onClose" position="bottom" custom-style="height: auto;padding:10rpx 0rpx;">
+  <!-- 取消、确定按钮 -->
+  <view class="cityheader">
+      <view bindtap="cancel" class="city-cancel">取消</view>
+      <view bindtap="confirm" class="city-true">确定</view>
+  </view>
+    <!-- 内容区域 -->
+    <van-checkbox-group value="{{ result }}" bind:change="onChange">
+      <van-cell-group>
+          <van-cell
+              wx:for="{{ periodList }}"
+              wx:key="index"
+              title="{{ item }}"
+              value-class="value-class"
+              clickable
+              data-index="{{ index }}"
+              title-width="94%" 
+              center
+              bind:click="toggle"
+          >
+          <van-checkbox
+              catch:tap="noop"
+              label-position="right"
+              class="checkboxes-{{ index }}"
+              name="{{ item }}"
+          />
+          </van-cell>
+      </van-cell-group>
+    </van-checkbox-group>
+
+</van-popup>
+ 
+ 
+ 

@@ -1,0 +1,63 @@
+.reservation-item{
+  width: 100%;
+  border:1rpx solid #efefef;
+  border-radius: 8rpx;
+  box-shadow: 1rpx 1rpx 10rpx #ddd;
+
+
+  
+}
+.seat-title{
+  font-size: 40rpx;
+  padding-bottom: 10rpx;
+}
+.period-list{
+  display: flex;
+  flex-direction: column; /* 设置主轴方向为垂直 */
+  margin-left: 5rpx;
+  padding-right: 5rpx;
+}
+.period-list text{
+  font-size: 30rpx;
+  color:gray;
+  padding-bottom: 5rpx;
+}
+.period-container{
+  display: flex;
+  display: flex;
+  flex-wrap: wrap; /* 这里设置 flex-wrap 为 wrap，表示允许自动换行 */
+  padding-left: 8rpx;
+  padding-right: 8rpx;
+}
+.period-item{
+  padding-left: 5rpx;
+}
+.but-item{
+  display: flex;
+  justify-content: flex-end; /* 从右边开始放置元素 */
+}
+/* pages/select-checkbox/select-checkbox.wxss */
+.van-cell__value {
+  text-align: left !important;
+}
+.cityheader {
+  width: 100%;
+  z-index: 5;
+}
+.city-cancel {
+  float: left;
+  margin: 20rpx;
+  color: #969799;
+  z-index: 11;
+  position: relative;
+}
+.city-true {
+  float: right;
+  margin: 20rpx;
+  color: #576b95;
+  z-index: 11;
+  position: relative;
+}
+.checkbok-container{
+  height: 1320rpx;
+}

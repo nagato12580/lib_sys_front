@@ -62,6 +62,7 @@ swiper image{
   border-radius: 8rpx;
   box-shadow: 1rpx 1rpx 20rpx #ddd;
 }
+
 .text-contain{
   display: flex;
   height: 80rpx;
@@ -118,10 +119,16 @@ swiper image{
   flex-direction: column;/*实现垂直布局*/
 }
 .text-title{
-  font-size: 13px;
+  font-size: 12px;
   font-weight: bold;
 }
 .text-author{
   font-size: 10px;
   color: #a7a0a0;
+}
+.warning{
+  height: 150rpx;
+  color:gainsboro;
+  justify-content: center; /* 水平居中对齐 */
+  display: flex;
 }

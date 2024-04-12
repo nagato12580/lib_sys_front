@@ -89,6 +89,7 @@ getBookDetailIndo(id){
           onlyFromCamera:true,
           scanType:['barCode'],
           success:res=>{
+            console.log(res.result)
             if(res.result==this.data.bookDetail.ISBN){
               console.log("图书相符")
               var id=this.data.bookDetail.id

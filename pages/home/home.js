@@ -2,6 +2,8 @@
 import {createStoreBindings} from 'mobx-miniprogram-bindings'
 import {store} from '../../store/store'
 import {promisifyAll} from 'miniprogram-api-promise'
+var Request = require("../../apis/request.js");
+var Api = require("../../apis/api.js")
 const wxp = wx.p = {}
 promisifyAll(wx,wxp)
 const appData = getApp().globalData;
@@ -55,8 +57,23 @@ async getPopularList(){
     popularList:res.data.results
   })
 },
+getNewBookList(){
+  var that=this
+  Request.request(Api.newBookList,{'page':1,'limit':9},'GET').then(
+    function(res){
+      if(res.statusCode==200){
+        that.setData({
+          newBookList:res.data.results
+        })
 
-//获取书籍列表数据进行跳转,完成
+      }
+    }
+  )
+
+},
+
+
+//获取热门书籍列表数据进行跳转,完成
 async getBookList(){
   const res = await wx.p.request({
     url:`${appData.baseUrl}/api/borrow/get_popular/?page=1&limit=6`,
@@ -69,7 +86,20 @@ console.log(nextUrl)
 wx.navigateTo({
   url: '/pages/chart/chart?pt=1&bookList='+bookList+'&nextUrl='+nextUrl,
 })
-
+},
+//获取新上架书籍列表数据进行跳转,完成
+async toNewBookList(){
+  const res = await wx.p.request({
+    url:`${appData.baseUrl}/api/book/?page=1&limit=6`,
+    method:'GET'
+})
+//作为参数并且传递给目标页面进行渲染 url="/pages/chart/chart?popularity=1" 
+let bookList = JSON.stringify(res.data.results)
+let nextUrl=encodeURIComponent(JSON.stringify(res.data.next));
+console.log(nextUrl)
+wx.navigateTo({
+  url: '/pages/chart/chart?pt=1&bookList='+bookList+'&nextUrl='+nextUrl,
+})
 },
 
 //获取s首页公告列表，完成
@@ -109,7 +139,8 @@ getNoticeList(){
   onReady() {
     this.getPopularList(),
     this.getSwiperList(),
-    this.getHomeNotice()
+    this.getHomeNotice(),
+    this.getNewBookList()
   },
 
   /**

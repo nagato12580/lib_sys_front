@@ -4,6 +4,9 @@ var Request = require("../../apis/request.js");
 var Api = require("../../apis/api.js")
 var func = require("../../utils/function.js")
 const appData = getApp().globalData;
+import {promisifyAll} from 'miniprogram-api-promise'
+const wxp = wx.p = {}
+promisifyAll(wx,wxp)
 
 Page({
 
@@ -28,47 +31,6 @@ getSonBookID(e){
       url: '/pages/book/bookdetail/bookdetail?id='+id,
     })
   },
-
-  //获取排行榜数据列表
-  // getbookList(cb){
-  //   //控制节流阀
-  //   this.setData({
-  //     isloding:true
-  //   })
-  //   //展示loding效果
-  //   wx.showLoading({
-  //     title: '数据加载中…',
-  //   })
-  //   //这里应该从后端获取排行数据
-  //   const appData = getApp().globalData;
-  //   wx.request({
-  //     url: `${appData.baseUrl}/api/borrow/get_popular?page=1&limit=6`,
-  //     method:'GET',
-  //     success:({data:res})=>{
-  //       console.log(res),
-  //       this.setData({
-  //         bookList:res.results,
-  //         next_page:res.next
-  //       })
-  //     },
-  //     //不领成功还是失败都会调用的函数
-  //     complete:({data:res}) => {
-  //       console.log('不知道.....')
-  //       //隐藏loding加载框
-  //         wx.hideLoading()
-  //       //请求完成，关闭isloding
-  //       this.setData({
-  //         isloding:false
-  //       })
-  //       //若接收到回调函数则调用
-  //       cb && cb()
-
-        
-  //     }
-  //   })
-  // },
-
-
 
   /**
    * 生命周期函数--监听页面加载
@@ -99,6 +61,7 @@ getSonBookID(e){
     let bookList=JSON.parse(options.bookList)
     //带有特殊字符&需要进行编码和解码
     let nextUrl = JSON.parse(decodeURIComponent(options.nextUrl));
+    console.log(nextUrl)
     this.setData({
       bookList:bookList,
       nextUrl:nextUrl
@@ -153,22 +116,22 @@ getSonBookID(e){
     if(this.data.nextUrl===null){
       return
     }
-    // 提取参数
-    var nextUrl=this.data.nextUrl
-    var str = nextUrl.split('?')
-    //将路径参数转换为对象
-    var paras={}
-    paras=func.getUrlParasObj(str[1])
-    var that = this;
-    Request.request(Api.popularBooklist, paras, 'GET')
-      .then(function(res) {
-        that.setData({
-          //展开运算符，拼接数组
-          bookList:[...that.data.bookList,...res.data.results],
-          nextUrl:res.data.next
-      })
-    })
+    this.getNextPageDate()
   },
+  //获取下一页数据
+  async getNextPageDate(){
+    var url=this.data.nextUrl
+    const res = await wx.p.request({
+      url:url,
+      method:'GET'
+  })
+  let bookList = [...this.data.bookList,...res.data.results]
+  let nextUrl=res.data.next
+  this.setData({
+    bookList:bookList,
+    nextUrl:nextUrl
+  })
+},
 
   /**
    * 用户点击右上角分享

@@ -40,8 +40,9 @@ Page({
   ],
   timeIndexs:[],//选中时间段的id列表
   floorID:'',//选中时间段的代码
-  floorSeatListDetail:[],
-  floorSeatList:[],
+  nextDayFloorSeatListDetail:[],
+  nextDayFloorSeatList:[],
+  toDayFloorSeatListDetail:[],
   avaliableList:[],//选择楼层座位后当前可用的时间段列表
   selectedSeatId:'',
   index:'',//当前座位在列表中的index
@@ -55,8 +56,9 @@ Page({
     var nextDay=func.getNextFormattedDate()
     this.setData({
       nextDay:nextDay
-
     })
+    this.getDate()
+    this.getTodayOverview()
 
   },
 
@@ -71,6 +73,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
+    this.getDate()
+    this.getTodayOverview()
+    //发送请求获取该楼层的可用座位列表
+    this.getNextDayAvailableSeat(this.data.floorID)
 
   },
 
@@ -121,17 +127,43 @@ Page({
     })
   },
 
-// 获取选中的楼层
+// 获取选中的楼层（下一天）
 getSelectFloor: function(e) {
    var floorID=e.detail.value.code
   this.setData({
     floorID:floorID
   })
   //发送请求获取该楼层的可用座位列表
-  this.getAvailableSeat(floorID)
+  this.getNextDayAvailableSeat(floorID)
 },
-//根据楼层ID获取可用座位列表
-getAvailableSeat(floorID){
+//获取选中的楼层（当天）
+getTodaySelectFloor: function(e) {
+  var floorID=e.detail.value.code
+ this.setData({
+   floorID:floorID
+ })
+ //发送请求获取该楼层的可用座位列表
+ this.getTodayAvailableSeat(floorID)
+},
+
+//根据楼层获取该楼层当天座位使用情况
+getTodayAvailableSeat(floorID){
+  var that=this
+  var floor=this.data.floorID
+  var todayDate=this.data.todayDate
+  Request.request(Api.floorSeat,{'floor':floor,'appointment_date':todayDate},'GET').then(
+    function(res){
+      if(res.statusCode==200){
+        that.setData({
+          toDayFloorSeatListDetail:res.data.floorListDetail,
+          toDayFloorSeatList:res.data.floorList
+        })
+      }
+    })
+
+},
+//根据楼层ID获取下一天可用座位列表
+getNextDayAvailableSeat(floorID){
   var that=this
   var floor=this.data.floorID
   var nextDay=this.data.nextDay
@@ -139,8 +171,8 @@ getAvailableSeat(floorID){
     function(res){
       if(res.statusCode==200){
         that.setData({
-          floorSeatListDetail:res.data.floorListDetail,
-          floorSeatList:res.data.floorList
+          nextDayFloorSeatListDetail:res.data.floorListDetail,
+          nextDayFloorSeatList:res.data.floorList
         })
       }
     })
@@ -160,7 +192,7 @@ selectPeriod(e){
   })
   // this.getAvaliTimeList(index,selectedSeatId)
   //获取当前座位的使用情况列表
-  var usedList=this.data.floorSeatListDetail[index].usedList
+  var usedList=this.data.nextDayFloorSeatListDetail[index].usedList
   var timeList = this.data.timeArray
   //构造当前座位可预约的时间列表
   var avaliableList=[]
@@ -176,7 +208,7 @@ selectPeriod(e){
 //更新当前座位的可预约时间列表
 getAvaliTimeList(index,seatId){
     //获取当前座位的使用情况列表
-    var usedList=this.data.floorSeatListDetail[index].usedList
+    var usedList=this.data.nextDayFloorSeatListDetail[index].usedList
     var timeList = this.data.timeArray
     //构造当前座位可预约的时间列表
     var avaliableList=[]
@@ -231,15 +263,26 @@ toComfirmInfo(){
           duration: 500, // 悬浮框显示时间
           success: () => {
             //成功之后刷新表格数据
-            that.getAvailableSeat(floorID)
+            that.getNextDayAvailableSeat(floorID)
             //设置当前
             that.setData({
               reset:true
             })
             // //更新当前可选择时间段列表
             // that.updateupAvaliableList(that.data.checkSelected)
+
           }
         });
+           //重新向到当前页面，强制刷新？
+           wx.redirectTo({
+             url: '/pages/reservation/reservation',
+             success: function(res) {
+               console.log('页面刷新成功');
+             },
+             fail: function(res) {
+               console.log('页面刷新失败');
+             }
+           })
       }
       else{
         wx.showToast({
@@ -252,5 +295,40 @@ toComfirmInfo(){
         });
       }
     })
+},
+//获取今天和明天的日期
+getDate(){
+  // 获取今天的日期
+  const today = new Date();
+  const todayDate = today.toISOString().split('T')[0]; // 格式化日期为 YYYY-MM-DD
+  // 获取明天的日期
+  const tomorrow = new Date();
+  tomorrow.setDate(today.getDate() + 1);
+  const tomorrowDate = tomorrow.toISOString().split('T')[0]; // 格式化日期为 YYYY-MM-DD
+  this.setData({
+    todayDate:todayDate,
+    tomorrowDate:tomorrowDate
+  })
+},
+//获取当天楼层座位概览
+getTodayOverview(){
+  // 创建一个 Date 对象来表示当前时间
+  const now = new Date();
+  // 使用 getHours() 方法获取当前时间的小时数
+  const currentHour = now.getHours();
+  var today=this.data.todayDate
+  var that=this
+  Request.request(Api.floorOverview,{'hour':currentHour,'date':today},'GET').then(
+    function(res){
+      if(res.statusCode==200){
+        that.setData({
+          overviewTodayRes:res.data.res
+        })
+      }
+  
+  })
+
 }
+
+
 })

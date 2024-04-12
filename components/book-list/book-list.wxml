@@ -8,10 +8,10 @@
     <text>作者：{{item.author}}</text>
     <text class="introduction-item">简介：{{item.introduction}}</text>
     <!-- 显示标签 -->
-    <van-row gutter="4">
-      <van-col span="4" wx:for="{{item.category_detail}}">
-        <van-tag plain round type="primary" >{{item}}</van-tag>
-      </van-col>
-  </van-row>
+    <view style="display: flex;">
+      <view wx:for="{{item.category_detail}}">
+      <van-tag plain round type="primary" >{{item}}</van-tag>
+    </view>
+    </view>
   </view>
 </view>

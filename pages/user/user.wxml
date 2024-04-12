@@ -96,7 +96,7 @@
             </view>
         </view>
     </view>
-    <!-- 我的反馈 -->
+    <!-- 我的反馈
     <view class="order-container">
         <view class='header' data-index='0' bindtap='toMyFeedback'>
             <view class='top-title'>
@@ -108,7 +108,5 @@
                 <view class="arrow"></view>
             </view>
         </view>
-    </view>
-
-
+    </view> -->
 </view>

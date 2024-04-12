@@ -5,10 +5,12 @@ import { request } from './request'
 
 // let host = 'http://192.168.4.117:8001'
 
-let host = 'http://192.168.1.105:8000'
+let host = 'http://192.168.192.36:8000'
 
 // 获取热门书籍
 var PopularBooklist=host + '/api/borrow/get_popular'
+//获取新图书
+var newBookList=host + '/api/book/get_new_book'
 //借阅相关url
 var Borrow = host + '/api/borrow/'
 var myBorrow = host + '/api/borrow/get_my_borrow/'
@@ -59,6 +61,10 @@ var secondComment =host+'/api/mptt_comment/seconde_reply/'
 var seat=host+'/api/seat/'
 var floorSeat = host+'/api/seat/floor_seat/'
 var reservation=host+'/api/reservation/'
+var myReservation=host+'/api/reservation/my_reservation/'
+var cancelReservation=host+'/api/reservation/cancel_reservation/'
+var useReservation=host+'/api/reservation/use_reservation/'
+var floorOverview=host+'/api/seat/floor_overview/'
 
 module.exports = {
   borrow:Borrow,
@@ -85,6 +91,11 @@ module.exports = {
   secondComment:secondComment,
   seat:seat,
   floorSeat:floorSeat,
-  reservation:reservation
+  reservation:reservation,
+  myReservation:myReservation,
+  cancelReservation:cancelReservation,
+  useReservation:useReservation,
+  floorOverview:floorOverview,
+  newBookList:newBookList
 
 }

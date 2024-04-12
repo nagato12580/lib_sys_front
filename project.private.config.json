@@ -10,6 +10,13 @@
     "miniprogram": {
       "list": [
         {
+          "name": "pages/user/my_reservation/my_reservation",
+          "pathName": "pages/user/my_reservation/my_reservation",
+          "query": "id=9",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "pages/reservation/reservation",
           "pathName": "pages/reservation/reservation",
           "query": "",

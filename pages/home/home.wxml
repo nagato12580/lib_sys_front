@@ -52,32 +52,31 @@
 
 
 <!--新书展示-->
-<view class="view-contain">
+<view class="view-contain-new" >
   <view class="text-contain"> 
       <view class="title">
         <text>新书一览</text>
       </view>
     <view class="item">
-      <navigator url="/pages/chart/chart?newbook=1" open-type="navigate" class="more">更多</navigator>
+      <view class="more" bind:tap="toNewBookList">更多</view>
     </view>
   </view>
   <view class="popular-contain">
-
-  </view>
-</view>
-
-
-
-<!--借阅榜-->
-<view class="view-contain">
-  <view class="text-contain"> 
-      <view class="title">
-        <text>借阅榜</text>
+    <view class="popular-item" wx:for="{{newBookList}}" wx:key="index" bind:tap="getBookId" data-id="{{item.id}}">
+      <view class="item-image">
+        <image src="{{item.image}}"></image>
       </view>
-    <view class="item">
-      <navigator url="/pages/chart/chart" open-type="navigate" class="more">更多></navigator>
+      <view class="item-text">
+        <text class='text-title'>{{item.bookTitle}}</text>
+        <text class='text-author'>{{item.author}}</text>
+      </view>
     </view>
   </view>
-  <view class="popular-contain">
-  </view>
 </view>
+
+<view class="warning">
+-----已经到底啦------
+</view>
+
+
+

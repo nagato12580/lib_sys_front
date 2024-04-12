@@ -11,11 +11,12 @@
   <!-- <view class="tag-container">
     <van-tag plain round type="primary" wx:for="{{bookDetail.book_info.category_detail}}">{{item}}</van-tag>
   </view> -->
-  <van-row gutter="5">
-      <van-col span="8" wx:for="{{bookDetail.book_info.category_detail}}">
-        <van-tag plain round type="primary" >{{item}}</van-tag>
-      </van-col>
-  </van-row>
+
+  <view style="display: flex;">
+      <view wx:for="{{bookDetail.book_info.category_detail}}">
+      <van-tag plain round type="primary" >{{item}}</van-tag>
+    </view>
+    </view>
 </view>
 
 <!-- 其余信息 -->

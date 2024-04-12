@@ -20,7 +20,8 @@
     "pages/message/editing/editing",
     "pages/book/search/search",
     "pages/user/mymessage/mymessage",
-    "pages/reservation/reservation"
+    "pages/reservation/reservation",
+    "pages/user/my_reservation/my_reservation"
   ],
   "window": {
     "navigationBarTitleText": "数字图书馆",

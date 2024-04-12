@@ -6,6 +6,8 @@
     "van-circle": "@vant/weapp/circle/index",
     "select-popup": "/components/select-popup/select-popup",
     "select-checkbox": "/components/select-checkbox/select-checkbox",
-    "my-select-time":"/components/my-select-time/my-select-time"
+    "my-select-time":"/components/my-select-time/my-select-time",
+    "van-tab": "@vant/weapp/tab/index",
+    "van-tabs": "@vant/weapp/tabs/index"
   }
 }

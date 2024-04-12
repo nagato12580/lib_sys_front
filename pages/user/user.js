@@ -166,6 +166,15 @@ Page({
       })
     }
   },
+  //获取我的预约
+  toMyReservation(){
+    if(this.data.hasUserInfo){
+      var id=this.data.userInfo.id
+      wx.navigateTo({
+        url: '/pages/user/my_reservation/my_reservation?id='+id,
+      })
+    }
+  },
   //获取我的资料
   toMyDetailInfo(){
     if(this.data.hasUserInfo){
