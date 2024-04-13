@@ -2,6 +2,7 @@
 var func = require("../../utils/function.js")
 var Request = require("../../apis/request.js");
 var Api = require("../../apis/api.js");
+import Dialog from '@vant/weapp/dialog/dialog';
 //引入自定义监听器
 import { setWatcher } from '../../utils/watch.js';
 Page({
@@ -273,26 +274,23 @@ toComfirmInfo(){
 
           }
         });
-           //重新向到当前页面，强制刷新？
-           wx.redirectTo({
-             url: '/pages/reservation/reservation',
-             success: function(res) {
-               console.log('页面刷新成功');
-             },
-             fail: function(res) {
-               console.log('页面刷新失败');
-             }
-           })
       }
       else{
-        wx.showToast({
-          title: '预约失败',
-          icon: 'fail',
-          duration: 500, // 悬浮框显示时间
-          // success: () => {
-          //   //成功之后刷新表格数据
-          // }
-        });
+        console.log(res)
+        //获取冲突的时间段列表
+        var conflictList=res.data
+        var message=""
+        conflictList.forEach(function(item) {
+          message+=" "+item
+      });
+      console.log(message)
+      Dialog.alert({
+        title: '时间段冲突',
+        message: message+"已被预约，请重新选择",
+      }).then(() => {
+        // on close
+      });
+
       }
     })
 },

@@ -75,7 +75,7 @@ Page({
   bindTitleInput: function (e) {
     const title = e.detail.value;
     const count = title.length;
-    if (count <= 50) {
+    if (count <= 15) {
       this.setData({
         themeTitle: title
       });
