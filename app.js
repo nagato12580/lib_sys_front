@@ -33,7 +33,7 @@ App({
   globalData: {
     userInfo: null,
     //全局url
-    baseUrl:"http://192.168.192.36:8000",
+    baseUrl:"http://192.168.137.1:8000",
     jwt: null,//存储token
     access_token:null,
     account_id:null,

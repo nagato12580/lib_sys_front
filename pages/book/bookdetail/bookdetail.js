@@ -78,46 +78,70 @@ getBookDetailIndo(id){
   },
   //借阅
   onClickButton(){
-
-    Dialog.alert({
-      title: '温馨提醒',
-      message: '借阅期限为90天，请您在按时归还图书',
-    }).then(() => {
-      // on close
-        // 允许从相机和相册扫码
-        wx.scanCode({
-          onlyFromCamera:true,
-          scanType:['barCode'],
-          success:res=>{
-            console.log(res.result)
-            if(res.result==this.data.bookDetail.ISBN){
-              console.log("图书相符")
-              var id=this.data.bookDetail.id
-              var that=this
-              Request.request(Api.borrow,{'book':id},'POST').then(
-                function(res){
-                  if(res.statusCode==201){
-                    Notify({ type: 'success', message: '借阅成功' });
-                    //更新馆藏数据
-                    that.getBookDetailIndo(id)
+    //先检查登录，若未登录则不能借阅
+    let jwt = wx.getStorageSync('jwt');
+    if(jwt!=''){
+          //应该先检测用户是否网上信息，若未完善则不允许借阅
+    var that=this
+    Request.request(Api.checkUserInfo,{},'GET').then(
+      function(res){
+        if(res.data.flage){
+          Dialog.alert({
+            title: '温馨提醒',
+            message: '借阅期限为90天，请您在按时归还图书',
+          }).then(() => {
+            // on close
+              // 允许从相机和相册扫码
+              wx.scanCode({
+                onlyFromCamera:true,
+                scanType:['barCode'],
+                success:res=>{
+                  console.log(res.result)
+                  if(res.result==that.data.bookDetail.ISBN){
+                    console.log("图书相符")
+                    var id=that.data.bookDetail.id
+                    Request.request(Api.borrow,{'book':id},'POST').then(
+                      function(res){
+                        if(res.statusCode==201){
+                          Notify({ type: 'success', message: '借阅成功' });
+                          //更新馆藏数据
+                          that.getBookDetailIndo(id)
+                        }
+                        if(res.statusCode==400){
+                          Notify({ type: 'warning', message: '库存不足' });
+                        }
+                      }
+                    )
                   }
-                  if(res.statusCode==400){
-                    Notify({ type: 'warning', message: '库存不足' });
+                  else{
+                    Notify({ type: 'warning', message: '图书不符' });
                   }
+                  console.log(res.result)
+                },
+                fail:err=>{
+                  console.log(err);
                 }
-              )
-            }
-            else{
-              Notify({ type: 'warning', message: '图书不符' });
-            }
-            console.log(res.result)
-          },
-          fail:err=>{
-            console.log(err);
-          }
-        })
-    });
+              })
+          });
+        }
+        else{
+          Dialog.alert({
+            message: '请到完善个人信息之后再进行借阅',
+          }).then(() => {
+            // on close
+          });
+        }
+      }
+    )
+    }
+    else{
+      Dialog.alert({
+        message: '请登录之后再进行借阅',
+      }).then(() => {
+        // on close
+      });
 
+    }
 
   },
   //跳转留言界面

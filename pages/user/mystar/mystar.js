@@ -1,6 +1,10 @@
 // pages/user/mystar/mystar.js
 var Request = require('../../../apis/request.js');
 var api = require('../../../apis/api.js');
+const appData = getApp().globalData;
+import {promisifyAll} from 'miniprogram-api-promise'
+const wxp = wx.p = {}
+promisifyAll(wx,wxp)
 Page({
 
   /**
@@ -16,6 +20,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    this.toMyStarBookList()
 
   },
 
@@ -59,6 +64,12 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom() {
+    //请求下一页数据拼接bookList
+    //无下一页数据，直接返回
+    if(this.data.nextUrl===null){
+      return
+    }
+    this.getNextPageDate()
 
   },
 
@@ -90,5 +101,22 @@ Page({
     wx.navigateTo({
       url: '/pages/book/bookdetail/bookdetail?id='+id,
     })
-  }
+  },
+    //获取下一页数据
+    async getNextPageDate(){
+      var url=this.data.nextUrl
+      const res = await wx.p.request({
+        url:url,
+        method:'GET',
+        header: {
+          'Authorization': 'Bearer ' + wx.getStorageSync('jwt') // 默认值
+        },
+    })
+    let bookList = [...this.data.bookList,...res.data.results]
+    let nextUrl=res.data.next
+    this.setData({
+      bookList:bookList,
+      nextUrl:nextUrl
+    })
+  },
 })

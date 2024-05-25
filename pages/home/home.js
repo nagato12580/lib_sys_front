@@ -36,14 +36,21 @@ getBookId(e){
   })
   },
   //获取论播图数据的方法，完成
-  getSwiperList(){
-    var that = this;
-    // 获取轮播图数据
-    Request.request(Api.swiper, {"is_active":1}, 'GET')
-    .then(function(res) {
-      that.setData({
-        images:res.data[0].full_image_path
-      })
+  async getSwiperList(){
+    // var that = this;
+    // // 获取轮播图数据
+    // Request.request(Api.swiper, {"is_active":1}, 'GET')
+    // .then(function(res) {
+    //   that.setData({
+    //     images:res.data[0].full_image_path
+    //   })
+    // })
+    const res = await wx.p.request({
+      url:`${appData.baseUrl}/api/swiper?is_active=1`,
+      method:'GET'
+  })
+    this.setData({
+      images:res.data[0].full_image_path
     })
   },
 
@@ -57,19 +64,25 @@ async getPopularList(){
     popularList:res.data.results
   })
 },
-getNewBookList(){
-  var that=this
-  Request.request(Api.newBookList,{'page':1,'limit':9},'GET').then(
-    function(res){
-      if(res.statusCode==200){
-        that.setData({
-          newBookList:res.data.results
-        })
-
-      }
-    }
-  )
-
+async getNewBookList(){
+  const res = await wx.p.request({
+    url:`${appData.baseUrl}/api/book/get_new_book/?page=1&limit=9`,
+    method:'GET'
+})
+  this.setData({
+    newBookList:res.data.results
+  })
+  ////使用以下代码会导致不登录就无法获得数据
+  // var that=this
+  // Request.request(Api.newBookList,{'page':1,'limit':9},'GET').then(
+  //   function(res){
+  //     if(res.statusCode==200){
+  //       that.setData({
+  //         newBookList:res.data.results
+  //       })
+  //     }
+  //   }
+  // )
 },
 
 
@@ -103,16 +116,23 @@ wx.navigateTo({
 },
 
 //获取s首页公告列表，完成
-getHomeNotice(){
-  var that = this;
-  // 获取通知列表数据数据
-  Request.request(Api.notice, {"is_active":1,"is_top":1}, 'GET')
-  .then(function(res) {
-    that.setData({
-      noticeList:res.data
-    })
+async getHomeNotice(){
+  // var that = this;
+  // // 获取通知列表数据数据
+  // Request.request(Api.notice, {"is_active":1,"is_top":1}, 'GET')
+  // .then(function(res) {
+  //   that.setData({
+  //     noticeList:res.data
+  //   })
+  // })
+  const res = await wx.p.request({
+    url:`${appData.baseUrl}/api/notice?is_active=1&is_top=9`,
+    method:'GET'
+})
+console.log(res.data)
+  this.setData({
+    noticeList:res.data
   })
-  
 },
 
 //获取公告详情数据，然后进行跳转 完成

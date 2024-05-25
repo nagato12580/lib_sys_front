@@ -46,6 +46,7 @@ Page({
    */
   onLoad(options) {
     this.getMyReservationSeatList()
+    this.getNextDate()
 
   },
 
@@ -284,6 +285,23 @@ console.log(event)
   const checkbox = this.selectComponent(`.checkboxes-${index}`)
   checkbox.toggle()
 },
-noop() {}
+noop() {},
+getNextDate(){
+  // 创建一个 Date 对象表示当前日期
+var currentDate = new Date();
+
+// 获取当前日期的天数并加一
+var nextDate = new Date(currentDate);
+  nextDate.setDate(currentDate.getDate() + 1);
+  // 获取下一天的年、月、日
+  var year = nextDate.getFullYear();
+  var month = nextDate.getMonth() + 1; // 月份从 0 开始，需要加一
+  var day = nextDate.getDate();
+  // 将下一天的年、月、日拼接成字符串
+  var nextDateString = year + '-' + (month < 10 ? '0' + month : month) + '-' + (day < 10 ? '0' + day : day);
+  this.setData({
+    nextDate:nextDateString
+  })
+}
   
 })

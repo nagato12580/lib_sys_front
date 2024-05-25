@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    user_id:'',
     messageIid:'',
     commentListLength:'',
     commentList:[],
@@ -25,7 +26,9 @@ Page({
    */
   onLoad(options) {
     var message_id=options.message_id
+    let user_id = wx.getStorageSync('userInfo').id;
     this.setData({
+      user_id:user_id,
       messageIid:message_id
     })
     //发送请求获取帖子主题和内容
@@ -169,6 +172,22 @@ Page({
           })
 
         }
+
+  },
+  //删除评论
+  toDeleteComment(e){
+    var comment_id=e.currentTarget.dataset.id
+    console.log(comment_id)
+    var that=this
+    var messageId=this.data.messageIid
+    Request.request(Api.deleteComment,{"comment_id":comment_id},'POST').then(
+      function(res){
+        //删除成功刷新页面
+        if(res.statusCode==200){
+          that.getMessageComment(messageId)
+        }
+    })
+
 
   }
 })

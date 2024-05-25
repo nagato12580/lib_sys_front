@@ -1,6 +1,7 @@
 // pages/user/mymessage/mymessage.js
 var Request = require('../../../apis/request.js');
 var Api = require('../../../apis/api.js');
+import Dialog from '@vant/weapp/dialog/dialog';
 Page({
   /**
    * 页面的初始数据
@@ -87,4 +88,28 @@ Page({
       url: '/pages/message/messagedetail/messagedetail?message_id='+id,
     })
   },
+  //提示是否删除该主题留言
+  toDeleteTheme(e){
+    var id=e.currentTarget.dataset.id
+    Dialog.confirm({
+      title: '删除提醒',
+      message: '主题留言删除后不可恢复，确定要删除吗？',
+    })
+      .then(() => {
+        // on confirm
+        //用户点击确定则删除该留言，并且刷新页面，否则啥也不做
+        var that=this
+        var user_id=this.data.user_id
+        Request.request(Api.deleteMessage,{'message_id':id},'POST').then(function(res){
+          if(res.statusCode==200){
+            //刷新数据
+            that.getMyMessageList(user_id)
+          }
+        })
+      })
+      .catch(() => {
+        // on cancel
+      });
+
+  }
 })

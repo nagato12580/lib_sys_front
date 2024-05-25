@@ -17,6 +17,7 @@
       <view class="date-reply">
         <text>{{item.created_time}}</text>
         <view class="comment-reply" catch:tap="toInputReply" data-parent_id="{{item.id}}" data-comment_user_id="{{item.comment_user_id}}">回复</view>
+        <view class="comment-reply" catch:tap="toDeleteComment" data-id="{{item.id}}" wx:if="{{item.comment_user_id==user_id}}">删除</view>
       </view>
       <view class="reply-containr" bind:tap="toCommentReply" data-index="{{index}}">
         <view>
@@ -30,6 +31,7 @@
             <view class="date-reply">
               <text>{{item.created_time}}</text>
               <view class="comment-reply" catch:tap="toInputReply" data-parent_id="{{item.id}}" data-comment_user_id="{{item.comment_user_id}}">回复</view>
+              <view class="comment-reply" catch:tap="toDeleteComment"   data-id="{{item.id}}" wx:if="{{item.comment_user_id==user_id}}">删除</view>
             </view>
           </view>
         </view>

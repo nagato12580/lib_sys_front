@@ -1,7 +1,7 @@
 <van-notify id="van-notify" />
 
 <view class="reservation-item" wx:for="{{no_used_seat}}">
-      <view class="seat-title">{{item.floor}}第{{item.seat_number}}号座位</view>
+      <view class="seat-title">{{item.floor}}{{item.seat_number}}</view>
       <view class="period-list">
         <text>预约时间:  {{item.appointment_date}}</text>
         <view class="period-container">

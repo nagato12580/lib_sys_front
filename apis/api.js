@@ -5,7 +5,7 @@ import { request } from './request'
 
 // let host = 'http://192.168.4.117:8001'
 
-let host = 'http://192.168.192.36:8000'
+let host = 'http://192.168.137.1:8000'
 
 // 获取热门书籍
 var PopularBooklist=host + '/api/borrow/get_popular'
@@ -40,6 +40,10 @@ var upDateInfo = host+'/api/account/update_userinfo/'
 var getUserInfo = host+'/api/account/get_userinfo/'
 //个人详细信息确认接口
 var toComfirmInfo = host+'/api/account/comfirm_info/'
+//检查个人详细信息是否补充完毕接口
+var checkUserInfo=host+'/api/account/check_userinfo/'
+//检查当前是否是登陆状态
+var checkLogin=host+'/api/account/check_login/'
 
 //图书收藏
 var collectBook = host+'/api/collection/'
@@ -53,9 +57,11 @@ var getFacultMajor = host+'/api/major/get_facult_major/'
 
 //留言相关接口
 var bookMessage = host+'/api/message/'
+var deleteMessage=host+'/api/message/delete/'
 //评论相关接口
 var comment = host+'/api/mptt_comment/'
 var secondComment =host+'/api/mptt_comment/seconde_reply/'
+var deleteComment=host+'/api/mptt_comment/delete/'
 
 //预约相关接口
 var seat=host+'/api/seat/'
@@ -96,6 +102,10 @@ module.exports = {
   cancelReservation:cancelReservation,
   useReservation:useReservation,
   floorOverview:floorOverview,
-  newBookList:newBookList
+  newBookList:newBookList,
+  deleteMessage:deleteMessage,
+  deleteComment:deleteComment,
+  checkUserInfo:checkUserInfo,
+  checkLogin:checkLogin
 
 }
